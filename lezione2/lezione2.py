@@ -16,10 +16,11 @@ print(f"Hello {Name}, would you like to learn some python today?")
  and title case.
 '''
 
-Name:str = "Emanuele"
-print(Name.lower())
-print(Name.upper())
-print(Name.title())
+name:str = "Emanuele"
+name_lower:str = name.lower()
+name_upper:str = name.upper()
+name_title:str = name.title()
+print(name_lower, name_upper, name_title)
 
 '''
 2-5. Famous Quote: Find a quote from a famous person you admire. 
@@ -28,6 +29,6 @@ Your output should look something like the following,
 including the quotation marks: Albert Einstein once said,
 “A person who never made a mistake never tried anything new.”
 '''
-quote:str = "rispetto l'omofobia"
+quote:str = "Forza Roma"
 Name:str = "Francesco Totti"
-print(f"{Name} once said {quote}")
+print(f"{Name} once said {quote} ")
