@@ -28,3 +28,6 @@ Your output should look something like the following,
 including the quotation marks: Albert Einstein once said,
 “A person who never made a mistake never tried anything new.”
 '''
+quote:str = "rispetto l'omofobia"
+Name:str = "Francesco Totti"
+print(f"{Name} once said {quote}")
