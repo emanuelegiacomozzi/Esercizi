@@ -37,4 +37,5 @@ def print_numbers(l:list):
     for i in l:
         print(i)
     return i
-print_numbers([1,2,3,4])
+l = [1,2,3,4]
+print_numbers(l)
