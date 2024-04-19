@@ -119,14 +119,11 @@ print(f"Ciao {guest[5]} vuoi venire a cena?")
 • Print a message to each of the two people still on your list, letting them know they’re still invited.
 • Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure you actually have an empty list at the end of your program.
 '''
-
 guest:list = ["Pino", "Franco", "Gianluca"]
-
-
-
-
-
-
-
-
-
+print("Ho trovato una sala più grande, posso invitare altre persone")
+guest.insert(0, "Gianni")
+guest.insert(2, "Marica")
+guest.append("Sofia")
+for i in guest:
+    print(f"Ciao {i} vuoi venire a cena?")
+print("Scusate posso invitare solo due persone, mi dispiace")
