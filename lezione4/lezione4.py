@@ -39,3 +39,17 @@ def print_numbers(l:list):
     return i
 l = [1,2,3,4]
 print_numbers(l)
+
+#esercizio 5
+
+def check_each(l:list):
+    for i in l:
+        if i > 5:
+            print(f"{i} è maggiore di 5")
+        elif i < 5:
+            print(f"{i} è minore di 5")
+        else: 
+            print(f"{i} è uguale a 5")
+    return i
+l = [2, 5, 7, 8, 9]
+check_each(l)
