@@ -15,5 +15,18 @@ def check_value(x:int):
     else:
         print(f"{x} è uguale a 5")
     return x
-x:int = int(input("Inserisci un numero: "))
+x= int(input("Inserisci un numero: "))
 check_value(x)
+
+#esercizio 3
+
+def check_length(x:str):
+    if len(x) > 10:
+        print(f"La lunghezza di {x} è maggiore di 10")
+    elif len(x) < 10:
+        print(f"La lunghezza di {x} è minore di 10")
+    else: 
+        print(f"La lunghezza di {x} è uguale a 10")
+    return x
+x = input("Inserisci una stringa: ")
+check_length(x) 
