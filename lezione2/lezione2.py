@@ -121,6 +121,19 @@ print(f"Ciao {guest[5]} vuoi venire a cena?")
 '''
 
 guest:list = ["Pino", "Franco", "Gianluca"]
+print("Ho trovato una sala più grande")
+guest.insert(0, "Gianni")
+guest.insert(2, "Maria")
+guest.append("Sofia")
+print(f"Ciao {guest[0]} vuoi venire a cena?")
+print(f"Ciao {guest[1]} vuoi venire a cena?")
+print(f"Ciao {guest[2]} vuoi venire a cena?")
+print(f"Ciao {guest[3]} vuoi venire a cena?")
+print(f"Ciao {guest[4]} vuoi venire a cena?")
+print(f"Ciao {guest[5]} vuoi venire a cena?")
+print(f"Ciao mi dispiace ma posso invitare solo due persone")
+guest.pop(0)
+print(f"Ciao {guest[0]}, mi dispiace ma non posso più invitarti")
 
 
 
