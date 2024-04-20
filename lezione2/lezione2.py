@@ -206,3 +206,117 @@ seriea_teams.sort(reverse = True)
 print(seriea_teams)
 del[serieb_teams[0:]]
 print(serieb_teams)
+
+'''
+6-1. Person: Use a dictionary to store information about a person you know. 
+Store their first name, last name, age, and the city in which they live. 
+You should have keys such as first_name, last_name, age, and city.
+Print each piece of information stored in your dictionary.
+'''
+
+friend:dict = {"Name": "Francesco", "last_name": "Rossi", "age": 20, "city": "Roma"}
+print(friend)
+
+'''
+6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers.
+ Think of five names, and use them as keys in your dictionary. 
+ Think of a favorite number for each person, and store each as a value in your dictionary. 
+ Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
+'''
+
+favourite_number:dict = {"Mario": 5, "Flavio": 10, "Sara": 7, "Antonio": 12, "Dario": 10}
+print(favourite_number.items())
+
+'''
+6-3. Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+• Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+• Print each word and its meaning as neatly formatted output. 
+You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. 
+Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
+'''
+
+glossary:dict = {"String": "Strings in python are surrounded by either single quotation marks, or double quotation marks." ,  "List": "Lists are used to store multiple items in a single variable", "Set": "A set is a collection which is unordered, unchangeable*, and unindexed", "Tuple": "A tuple is a collection which is ordered and unchangeable.", "Dict": "A dictionary is a collection which is ordered*, changeable and do not allow duplicates"}
+for word, meaning in glossary.items():
+    print(word.title() + ":\n" + meaning + "\n")
+
+'''
+6-7. People: Start with the program you wrote for Exercise 6-1.
+Make two new dictionaries representing different people, and store all three dictionaries in a list called people.
+Loop through your list of people. As you loop through the list, print everything you know about each person.
+'''
+
+friend:dict = {"Name": "Francesco", "last_name": "Rossi", "age": 20, "city": "Roma"}
+friend1:dict = {"Name": "Tiziano", "last_name": "Verdi", "age": 20, "city": "Roma"}
+friend2:dict = {"Name": "Massimo", "last_name": "Neri", "age": 21, "city": "Bergamo"}
+people:list = [friend, friend1, friend2]
+for friend in people:
+    print("Name:", friend["Name"])
+    print("Last Name:", friend["last_name"])
+    print("Age:", friend["age"])
+    print("City:", friend["city"])
+    print()
+
+'''
+6-8. Pets: Make several dictionaries, where each dictionary represents a different pet.
+ In each dictionary, include the kind of animal and the owner’s name. 
+ Store these dictionaries in a list called pets. Next, loop through your list and as
+you do, print everything you know about each pet. 
+'''
+
+pet1:dict = {"kind": "Snake", "owner": "Marco"}
+pet2:dict = {"kind": "Cat", "owner": "Riccardo"}
+pet3:dict = {"kind": "Dog", "owner": "Giovanni"}
+pet4:dict = {"kind": "Fish", "owner": "Simona"}
+pets:list = [pet1, pet2, pet3, pet4]
+for pet in pets:
+    print("Kind:", pet["kind"])
+    print("Owner:", pet["owner"])
+    print()
+
+'''
+6-9. Favorite Places: Make a dictionary called favorite_places. 
+Think of three names to use as keys in the dictionary, and store one to three favorite places for each person.
+ To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
+ Loop through the dictionary, and print each person’s name and their favorite places.
+'''
+favorite_places:dict = {"Emanuele": "Tokyo", "Francesco": "New York", "Daniele": "Ibiza"}
+for name, place in favorite_places.items():
+    print(name.title() + ": " + place + "\n")
+
+'''
+6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number.
+ Then print each person’s name along with their favorite numbers.
+'''
+
+favorite_numbers:dict = {"Mario": [5, 12, 14], "Flavio": [10, 8, 9, 2], "Sara": [7, 2] , "Antonio": [12, 4, 5], "Dario": [10, 8]}
+for person, numbers in favorite_numbers.items():
+    print(person + ": " + ", ".join(str(num) for num in numbers))
+
+'''
+6-11. Cities: Make a dictionary called cities. 
+Use the names of three cities as keys in your dictionary. 
+Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city.
+ The keys for each city’s dictionary should be something like country, population, and fact. Print the name of each city and all of the information you have stored about it.
+'''
+cities:dict = {"Roma": {"country": "Italy", "population": 2873000, "fact": "The heart of Catholic Christianity, it is the only city in the world to host within itself an entire state, the enclave of the Vatican City, to which is added the headquarters of the Sovereign Military Order of Malta, a legal person under international law."}, "Tokyo": {"country": "Japan", "population": 13929286, "fact": "Tokyo is the largest city in Japan and one of the most populous urban areas in the world."}, "London": {"country": "England", "population": 9304016, "fact": "London is one of the world's most visited cities and has a rich history spanning nearly two millennia."}}
+for city, info in cities.items():
+    print(f"City: {city}")
+    print(f"Country: {info['country']}")
+    print(f"Population: {info['population']}")
+    print(f"Fact: {info['fact']}")
+    print() 
+
+'''
+6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. 
+Use one of the example programs from this chapter, and extend it by adding new keys and values, 
+changing the context of the program, or improving the formatting of the output.
+'''
+favorite_places:dict = {"Emanuele": "Tokyo", "Francesco": "New York", "Daniele": "Ibiza"}
+for name, place in favorite_places.items():
+    print(name.title() + ": " + place + "\n")
+favorite_places["Daniele"] = "Maldive"
+for name, place in favorite_places.items():
+    print(name.title() + ": " + place + "\n")
+favorite_places["Riccardo"] = "Roma"
+for name, place in favorite_places.items():
+    print(name.title() + ": " + place + "\n")
