@@ -45,7 +45,7 @@ print(filename.removesuffix('.txt'))
 3-1. Names: Store the names of a few of your friends in a list called names.
  Print each person’s name by accessing each element in the list, one at a time.
 '''
-Names = ["Giorgio", "Mario", "Simone", "Carlo"]
+Names:list = ["Giorgio", "Mario", "Simone", "Carlo"]
 for i in Names:
     print(i)
 
@@ -54,8 +54,8 @@ for i in Names:
  but instead of just printing each person’s name, print a message to them. 
 The text of each message should be the same, but each message should be personalized with the person’s name.
 '''
-Names = ["Giorgio", "Mario", "Simone", "Carlo"]
-message = "come stai?"
+Names:list = ["Giorgio", "Mario", "Simone", "Carlo"]
+message:str = "come stai?"
 for i in Names:
     print(f"{i} {message}")
 
@@ -163,3 +163,46 @@ places.sort()
 print(places)
 places.sort(reverse = True)
 print(places)
+
+'''
+3-9. Dinner Guests: Working with one of the programs from Exercises 3, 
+use len() to print a message indicating the number of people you’re inviting to dinner.
+'''
+
+guest:list = ["Pino", "Franco", "Gianluca"]
+print("Ho trovato una sala più grande")
+guest.insert(0, "Gianni")
+guest.insert(2, "Maria")
+guest.append("Sofia")
+print("Quanti sono gli invitati: ", len(guest))
+
+'''
+3-10. Every Function: Think of things you could store in a list. 
+For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like. 
+Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
+'''
+
+seriea_teams:list = ["Inter", "Milan", "Juventus", "Bologna", "Roma", "Atalanta", "Lazio", "Napoli", "Fiorentina", "Monza", "Torino", "Genoa", "Empoli", "Cagliari", "Udinese", "Lecce", "H.Verona", "Frosinone", "Sassuolo", "Salernitana"]
+print("In Serie A ci sono : ", len(seriea_teams), " squadre")
+print(f"La capolista della Serie A è l'{seriea_teams[0].upper()}, l'ultima squadra della Serie A è la {seriea_teams[-1].lower()}")
+print("La mia squadra del cuore è: ", seriea_teams[4].title())
+serieb_teams:list = ["Parma", "Venezia", "Cremonese"]
+print(f"Queste sono le prime squadre di Serie B che saliranno in Serie A : {serieb_teams} ")
+print(f"Queste sono le ultime squadre di Serie A che scenderanno in Serie B : {seriea_teams[-3:]} ")
+seriea_teams.pop(-3)
+seriea_teams.pop(-2)
+seriea_teams.pop(-1)
+print(seriea_teams)
+seriea_teams.append(serieb_teams[0])
+seriea_teams.insert(-1, serieb_teams[1])
+seriea_teams.append(serieb_teams[2])
+print(sorted(seriea_teams))
+print(sorted(seriea_teams, reverse=True))
+print(sorted(seriea_teams, reverse=False))
+print(seriea_teams)
+seriea_teams.sort()
+print(seriea_teams)
+seriea_teams.sort(reverse = True)
+print(seriea_teams)
+del[serieb_teams[0:]]
+print(serieb_teams)
