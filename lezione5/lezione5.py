@@ -6,4 +6,4 @@ def is_palindrome(x:int):
     else:
         return False
 x = input("inserisci un numero: ")
-print(is_palindrome(x))
+print(is_palindrome(x)) 
