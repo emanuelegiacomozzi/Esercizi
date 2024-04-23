@@ -43,7 +43,7 @@ for n in numbers:
 4-4. One Million: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. (If the output is taking too long, stop it by pressing CTRL-C or by closing the output window.)
 '''
 n:int = 1 #i've initialized a variable n and i've assigned the value 1
-n1:int = 1000001 #i've initialized a variable n1 and i've assigned the value 1000001 because the range is from 1 to 1000000 inclusive
+n1:int = 10 #i've initialized a variable n1 and i've assigned the value 1000001 because the range is from 1 to 1000000 inclusive
 numbers:list = list(range(n,n1)) #'i've make a list which has as range n(1), n1(1000000)
 print(numbers)
 
@@ -52,12 +52,34 @@ print(numbers)
 '''
 
 
-numbers:list = list(range(1,1000001))
+numbers:list = list(range(1,10))
 min_number:int = min(numbers)
 print(min_number)
 max_number:int = max(numbers)
 print(max_number)
 sum_numbers:int = sum(numbers)
+print(sum_numbers)
+
+'''
+4-6. Odd Numbers: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. Use a for loop to print each number.
+'''
+
+odd:list = list(range(1,21,2))
+for n in odd:
+    print(n)
+
+'''
+4-7. Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+'''
+multiples:list = list(range(3,31,3))
+for n in multiples:
+    print(n)
+
+
+
+
+
+
 
 
  
