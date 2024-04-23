@@ -320,3 +320,4 @@ for name, place in favorite_places.items():
 favorite_places["Riccardo"] = "Roma"
 for name, place in favorite_places.items():
     print(name.title() + ": " + place + "\n")
+#finito
