@@ -6,8 +6,8 @@
 
 def pizza_type(pizza:list):
     for elem in pizza:
-        print(f"Mi piace la pizza {elem}")
-    print("Adoro la pizza")
+        print(f"I like the {elem} pizza")
+    print("I love pizza")
     return pizza
 pizza:list = ["Margherita", "Capricciosa", "Pistacchiosa"]
 pizza_type(pizza)
@@ -75,11 +75,104 @@ multiples:list = list(range(3,31,3))
 for n in multiples:
     print(n)
 
+'''
+4-8. Cubes: A number raised to the third power is called a cube. 
+For example, the cube of 2 is written as 2**3 in Python. Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.
+'''
+cubes:list = list(range(1,11))
+for cube in cubes:
+    print(cube**3)
 
+'''
+4-9. Cube Comprehension: Use a list comprehension to generate a list of the first 10 cubes.
+'''
+cubes:list = list(range(1,11))
+cubes1:list = [cube**3 for cube in cubes]
+print(cubes1 )
 
+'''
+4-10. Slices: Using one of the programs you wrote in this chapter, add several lines to the end of the program that do the following:
+• Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
+• Print the message Three items from the middle of the list are:. Then use a slice to print three items from the middle of the list.
+• Print the message The last three items in the list are:. Then use a slice to print the last three items in the list.
+'''
+cubes:list = list(range(1,11))
+cubes1:list = [cube**3 for cube in cubes]
+print(cubes1)
+print(len(cubes1)) #i control the lenght of the list cubes1 
+print("The first three elements are: ",cubes1[0:3]) #print the first three elements
+print("The last three elements are: ",cubes1[-3:]) #prints the last three elements
+central_index1:int = len(cubes1) // 2 #calculate the index of the centre of the cubes1 list
+central_index2:int = len(cubes1) // 2 - 1 #calculate the index preceding the centre index 
+central_index3:int = len(cubes1) // 2 + 1 #calculate the index following the centre index 
+print("The three central element are: ", cubes1[central_index2],cubes1[central_index1],cubes1[central_index3])
 
+'''
+4-11. My Pizzas, Your Pizzas: Start with your program from Exercise 4-1. Make a copy of the list of pizzas, and call it friend_pizzas. Then, do the following:
+• Add a new pizza to the original list.
+• Add a different pizza to the list friend_pizzas.
+• Prove that you have two separate lists. Print the message My favorite pizzas are:, and then use a for loop to print the first list. Print the message My friend’s favorite pizzas are:, and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list
+'''
+def pizza_type(pizza:list):
+    for elem in pizza:
+        print(f"I like the {elem} pizza")
+    print("I love pizza")
+    return pizza
+pizza:list = ["Margherita", "Capricciosa", "Pistacchiosa"]
+pizza_type(pizza)
+friend_pizzas:list = pizza.copy() #i've create a copy of pizza list
+pizza.append("Diavola")
+friend_pizzas.append("Marinara")
+my_pizzas:list = [elem for elem in pizza] #i've use the list comprehension to print the list
+friend_pizzas1:list = [elem for elem in friend_pizzas]
+print("My favorite pizzas are: ", my_pizzas)
+print("Your favorite pizzas are: ", friend_pizzas1)
 
+'''
+4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
+'''
 
+'''
+4-14. PEP 8: Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. You won’t use much of it now, but it might be interesting to skim through it.
+'''
 
+'''
+4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
+'''
+#first
+cubes:list = list(range(1,11))
+cubes1:list = [cube**3 for cube in cubes]
+print(cubes1)
+print(len(cubes1)) #i control the lenght of the list cubes1 
+print("The first three elements are: ",cubes1[0:3]) #print the first three elements
+print("The last three elements are: ",cubes1[-3:]) #prints the last three elements
+central_index1:int = len(cubes1) // 2 #calculate the index of the centre of the cubes1 list
+central_index2:int = len(cubes1) // 2-1 #calculate the index preceding the centre index 
+central_index3:int = len(cubes1) // 2+1 #calculate the index following the centre index 
+print("The three central element are: ", cubes1[central_index2],cubes1[central_index1],cubes1[central_index3])
 
+#second
+def pizza_type(pizza:list):
+    for elem in pizza:
+        print(f"I like the {elem} pizza")
+    print("I love pizza")
+    return pizza
+pizza:list = ["Margherita", "Capricciosa", "Pistacchiosa"]
+pizza_type(pizza)
+friend_pizzas:list = pizza.copy() #i've create a copy of pizza list
+pizza.append("Diavola")
+friend_pizzas.append("Marinara")
+my_pizzas:list = [elem for elem in pizza] #i've use the list comprehension to print the list
+friend_pizzas1:list = [elem for elem in friend_pizzas]
+print("My favorite pizzas are: ", my_pizzas)
+print("Your favorite pizzas are: ", friend_pizzas1)
+
+#third
+numbers:list = list(range(1,10))
+min_number:int = min(numbers)
+print(min_number)
+max_number:int = max(numbers)
+print(max_number)
+sum_numbers:int = sum(numbers)
+print(sum_numbers)
  
