@@ -66,17 +66,7 @@ print(make_album("Ed Sheraan", "Divide", songs=14))
 '''
 8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. Be sure to include a quit value in the while loop.
 '''
-def make_album(artist:str, album:str,):
-   artist_album:dict = {"artist": {artist}, "album": {album}}
-   return artist_album
-while True:
-   artist:str = input("Artist: ")
-   if artist == "quit":
-      break
-   album:str = input("Album: ")
-   if album == "quit":
-      break
-   print(make_album(artist,album))
+
 
 
 '''
@@ -151,6 +141,11 @@ print(cars("Ferrari", "Magnum pi", color="Red", displacement = 2.927 ))
 '''
 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
 '''
+def make_cars(manufacturer, model, **info):
+   car:dict = {"manufacturer": manufacturer, "model": model}
+   car.update(info)
+   return car
+
 
 '''
 8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. Import the function into your main program file, and call the function using each of these approaches:
@@ -160,8 +155,14 @@ from module_name import function_name as fn
 import module_name as mn
 from module_name import *
 '''
+def make_cars(manufacturer, model, **info):
+   car:dict = {"manufacturer": manufacturer, "model": model}
+   car.update(info)
+   return car
 
-
+'''
+8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
+'''
 
 
 
