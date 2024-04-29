@@ -131,6 +131,12 @@ print("Your favorite pizzas are: ", friend_pizzas1)
 '''
 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
 '''
+#exercise 4-4
+n:int = 1 
+n1:int = 10 
+numbers:list = list(range(n,n1)) 
+for num in numbers:
+    print(num)
 
 '''
 4-14. PEP 8: Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. You won’t use much of it now, but it might be interesting to skim through it.
@@ -406,11 +412,11 @@ for user in new_users:
 '''
 ordinal_numbers:list = list(range(1,10))
 for num in ordinal_numbers:
-    if num is 1:
+    if num == 1:
         print(f"{num}st")
-    elif num is 2:
+    elif num == 2:
         print(f"{num}nd")
-    elif num is 3:
+    elif num == 3:
         print(f"{num}rd")
     else:
         print(f"{num}th")
