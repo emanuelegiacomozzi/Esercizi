@@ -68,5 +68,53 @@ def add_one_to_list(l:list):
 l:list = [4, 4, 11]
 print(add_one_to_list(l))
 
-#esercizi 
+#esercizi opzionali 
+'''
+School Grading System:
+
+ Create a function that takes a student's name and their scores in different subjects as input.
+The function calculates the average score and prints the student's name, average, and a message indicating whether the student passed the exam (average >= 60) or failed.
+Create a for loop to iterate over a list of students and scores, calling the function for each student.
+'''
+def school_grading_system(students_scores:list):
+    for student,scores in students_scores:
+        print("Name :",student, "\nScores: ",scores)
+        sum_scores = sum(scores)
+        average = sum_scores / len(scores)
+        if average >= 60:
+            result:str = "Passed"
+        else:
+            result:str = "Failed"
+        print("Average: ",average) 
+        print("Result: ",result)
+        print()
+students_scores:list = [("Marco",[80,60,45,49.8]), ("Andrea",[90,100,85,95]), ("Giorgio",[45,48.9,50,80]), ("Sara",[60,65,70,50])]
+school_grading_system(students_scores)
+
+'''
+2. Guess the Number Game:
+
+Create a function that generates a random number within a range specified by the user.
+Prompt the user to guess the number within a specified maximum number of attempts.
+Provide feedback to the user after each guess, indicating whether their guess is too high, too low, or correct.
+Terminate the loop when the user guesses the number correctly or reaches the maximum number of attempts.
+'''
+import random
+def number_game(min_num, max_num, max_attempts):
+    num:int = random.randint(min_num,max_num)
+    print(f"Welcome! Guess a random number from {min_num} to {max_num} which i have chosen for you")
+    print(f"You've a maximum of {max_attempts} attempts. Good luck!")
+    attempts:int = 0
+    while attempts < max_attempts:
+        guess:int = int(input("Insert a number: "))
+        if guess > num:
+            print("Number too high")
+        elif guess < num:
+            print("Number to low")
+        else:
+            print("Congratulations! You win")
+            return
+        attempts += 1
+    print(f"Sorry, you have finish your attempts. The correct number was {num}")
+number_game(1,50,5)
 
