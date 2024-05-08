@@ -18,3 +18,4 @@ class Fence:
         self.area = area
         self.temperature = temperature
         self.habitat = habitat
+    
