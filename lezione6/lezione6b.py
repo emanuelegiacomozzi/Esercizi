@@ -108,16 +108,21 @@ print(restaurant.open_restaurant())
 9-3. Users: Make a class called User. Create two attributes called first_name and last_name, and then create several other attributes that are typically stored in a user profile. Make a method called describe_user() that prints a summary of the user’s information. Make another method called greet_user() that prints a personalized greeting to the user. Create several instances representing different users, and call both methods for each user.
 '''
 class User:
-    def __init__(self, first_name:str, last_name:str, password:str):
+    def __init__(self, first_name:str, last_name:str, password:str, login_attempts:int=0):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
+        self.login_attempts = login_attempts
     
     def description_user(self):
-        return f"First name = {self.first_name.capitalize()}\nLast name = {self.last_name.capitalize()}\nPassword = {self.password.capitalize()}"
+        return f"First name = {self.first_name.capitalize()}\nLast name = {self.last_name.capitalize()}\nPassword = {self.password.capitalize()}\nLogin attempts = {self.login_attempts()}"
     
     def greet_user(self):
         return f"Hello {self.first_name.capitalize()}, welcome on our site"
+    
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+
     
 user = User("Marco", "Rossi", "VzXe45%")
 user1 = User("Mario", "Verdi", "HGTyu76")
@@ -130,7 +135,9 @@ print(user1.greet_user())
 print()
 print(user2.description_user())
 print(user2.greet_user())
+user3 = User("Gianni", "Storti", "Hertu74", 10)
 
-print("Ciao")
+
+
 
 
