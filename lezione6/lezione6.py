@@ -1,70 +1,75 @@
+#ereditarietà
+
 class Person:
-    def __init__(self, name:str, age:int):
-        self.name = name
-        self.age = age
-emanuele = Person("Emanuele", 20)
-print(f"Nome = {emanuele.name}, età = {emanuele.age}")
-emanuele.age = 21
-print(f"Nome = {emanuele.name}, età = {emanuele.age}")
-persona = [Person("Emanuele", 21), Person("Carlo", 22)]
-avg_age:float = 0
-for person in persona:
-    avg_age += person.age
-avg_age /= len(persona)
-print(f"La media delle età è: {avg_age}")
 
-#esercizio 1
-class Person:
-    def __init__(self, name:str, age:int):
-        self.name = name
-        self.age = age
-alice = Person("Alice W.", 45)
-bob = Person("Bob M.", 36)
-print(bob.age)
-if alice.age > bob.age:
-    print("Alice is the oldest")
-else:
-    print("Bob is the best")
-emanuele = Person("Emanuele G.", 20)
-francesco = Person("Francesco C.", 19)
-tiziano = Person("Tiziano R.", 20)
-people:list = [alice, bob, emanuele, francesco, tiziano]
+    def __init__(self, name:str, surname:str, date_of_birth:str, gender:str, codice_fiscale:str) -> None:
+        self.name:str = name
+        self.surname:str = surname
+        self.date_of_birth:str = date_of_birth
+        self.gender:str = gender
+        self.codice_fiscale:str = codice_fiscale
 
-min_age:float = float("inf")
-index_min_age:int = 0
-for i, person in enumerate(people):
-    if person.age < min_age:
-        min_age = person.age
-        index_min_age = 1
-person = people[index_min_age]
-print(f"Il più giovane è: {person}")
+    def calculate_age(self) -> int:
 
-#esercizio 2
-class Person:
-    def __init__(self, name:str, age:int):
-        self.name = name
-        self.age = age
-        self.hobbies:set[str] = set()
+        return 10
     
-    def add_hobbies(self, hobbies:list[str]):
-        self.hobbies.update(hobbies)
-    
-    def add_hobby(self, hobby:str):
-        self.hobbies.append(hobby)
-    
-    def remove_hobby(self,hobby):
-        if hobby in self.hobbies:
-            self.hobbies.remove(hobby)
+    def __eq__(self, value: object) -> bool:
+        
+        return value.codice_fiscale == self.codice_fiscale
 
-    def __str__(self):
-        return f"Person(name={self.name}, age={self.age}, hobbies={self.hobbies})"
+person1:Person = Person(name="Emanuele", 
+                        surname="Giacomozzi",
+                        date_of_birth="14/04/2004",
+                        gender="Man")
 
-alice = Person("Alice", 47)
-bob = Person("Bob", 37)
-print(alice)
-alice.add_hobbies("Calcio", "Cricket")
-print(alice)
-alice.add_hobbies("Rugby")
-print(alice)
-alice.remove_hobby("Rugby")
-print(alice)
+
+class Dipendente(Person):
+
+    def __init__(self, name: str, surname: str, date_of_birth: str, gender: str, ore_lavorate:int) -> None:
+        super().__init__(name, surname, date_of_birth, gender)
+        self.ore_lavorate:int = ore_lavorate
+
+    def calcola_stipendio(self)->float:
+
+        return 500.0
+    
+    def __str__(self) -> str:
+        return super().__str__()
+
+dipendente1: Dipendente = Dipendente(name="Emanuele", 
+                        surname="Giacomozzi",
+                        date_of_birth="14/04/2004",
+                        gender="Man",
+                        ore_lavorate=500)
+
+
+class Professore(Dipendente):
+
+    def __init__(self, name: str, surname: str, date_of_birth: str, gender: str, ore_lavorate: int, materia_insegnata:str, ore_lezione:int) -> None:
+        super().__init__(name, surname, date_of_birth, gender, ore_lavorate)
+
+        self.materia_insegnata:str = materia_insegnata
+        self.ore_lezione:int = ore_lezione
+    
+    def __str__(self) -> str:
+        return f"Professor {self.name} {self.surname}"
+
+professore1:Professore = Professore(name="Emanuele", 
+                        surname="Giacomozzi",
+                        date_of_birth="14/04/2004",
+                        gender="Man",
+                        ore_lavorate=500,
+                        materia_insegnata="Arte",
+                        ore_lezione = 70)
+
+print(person1.calculate_age())
+
+print(dipendente1.ore_lavorate)
+print(dipendente1.name)
+print(dipendente1.calculate_age())
+print(dipendente1.calcola_stipendio())
+
+
+print(professore1.ore_lezione)
+
+
