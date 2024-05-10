@@ -1,55 +1,61 @@
 class Zoo:
-    def __init__(self,fences:str,zoo_keepers:str):
-        self.fences = fences
-        self.zoo_keepers = zoo_keepers
 
-class Animal:
-    def __init__(self, name:str, species:str, age:int, height:float, width:float, preferred_habitat:str, health:float):
-        self.name = name
-        self.species = species
-        self.age = age
-        self.height = height
-        self.width = width
-        self.preferred_habitat = preferred_habitat
-        self.health = (100*(1/age),3)
+    def __init__(self):
+        self.fences = []
+        self.zoo_keepers = []
+
+    def add_zookeepers(self, keeper:str):
+        self.zoo_keepers.append(keeper)
         
+    def add_fences(self, fence:str):
+        self.fences.append(fence)
+
+    def add_fences_zookeepers(self):
+        print("Guardians:")
+        for keepers in self.zoo_keepers:
+            print(keepers)
+        print("\nFences:")
+        for fence in self.fences:
+            print(fence)
 
 class Fence:
-    def __init__(self,area:float, temperature:float, habitat:str):
+    
+    def __init__(self, area:int, temperature:int, habitat:str):
         self.area = area
         self.temperature = temperature
         self.habitat = habitat
-        self.animals = []
     
-    def add_animal(self,animal:Animal):
-        if self.area >= animal.height * animal.width:
-            self.animals.append(animal)
-            self.area -= animal.height * animal.width
-        else:
-            print("The animal is too much bigger")
+    def __str__(self):
+        return f"Fence(area={self.area}, temperature={self.temperature}, habitat={self.habitat})"
 
-    def remove_animal(self,animal:Animal):
-        if self.area < animal.height * animal.width:
-                self.animals.remove(animal)
-                self.area += animal.height * animal.width
-        
+
 
 class ZooKeeper:
-    def __init__(self,name:str,surname:str,id:int):
+
+    def __init__(self, name:str, surname:str, id:str):
         self.name = name
         self.surname = surname
         self.id = id
     
-    def add_animal(self,animal:str,fence:Fence):
-        fence.add_animal(animal)
+    def __str__(self):
+        return f"Zookeeper(name={self.name}, surname={self.surname}, id={self.id})"
+    
+zoo = Zoo()
+
+keeper1:ZooKeeper = ZooKeeper("Lorenzo","Maggi",1234)
+zoo.add_zookeepers(keeper1)
+keeper2:ZooKeeper = ZooKeeper("Emanuele","Giacomozzi",2345)
+zoo.add_zookeepers(keeper2)
+
+fence1:Fence = Fence(100, 23, "Tropical")
+zoo.add_fences(fence1)
+
+zoo.add_fences_zookeepers()
         
-    def remove_animal(self,animal:str,fence:Fence):
-        fence.remove_animal(animal)
+
 
         
 
-animal = Animal("Elephant","Asiatic",32,5.43,6000.543,"Tropical",health = (100*(1/32),3))
-fence = Fence(100, 24, "Tropical")
-zoo_keeper = ZooKeeper("Matteo", "Giorgi", 1234)
+
 
     
