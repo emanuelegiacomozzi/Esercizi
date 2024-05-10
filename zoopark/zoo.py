@@ -31,6 +31,9 @@ class ZooKeeper:
     def add_animal(self,animal:str,fence:str):
         fence.add_animal(animal)
     
+    def remove_animal(self, animal:str,fence:str):
+        fence.add_animal(animal)
+    
 class Fence:
     
     def __init__(self, area:int, temperature:int, habitat:str, animals=[]):
@@ -48,16 +51,15 @@ class Fence:
             self.animals.append(animal)
             self.area -= animal.height * animal.width
             print(f"{animal} added to the fence.")
-        else:
-            print(f"The {animal} cannot stay in this fence")
-            print("\n##############################")
+        print("\n##############################")
     
     def remove_animal(self,animal:str):
         self.animal = animal
-        if self.area < animal.height * animal.width and animal.preferred_habitat == self.habitat:
+        if animal in self.animals:
             self.animals.remove(animal)
             self.area += animal.height * animal.width
             print(f"The {animal} is too big, remove it to the fence")
+        print("\n##############################")
         
 
 class Animal:
@@ -83,7 +85,7 @@ zoo.add_zookeepers(keeper1)
 keeper2:ZooKeeper = ZooKeeper("Emanuele","Giacomozzi",2345)
 zoo.add_zookeepers(keeper2)
 
-fence1:Fence = Fence(70, 23, "Forest")
+fence1:Fence = Fence(80, 23, "Forest")
 fence2:Fence = Fence(600, -45, "Artics")
 zoo.add_fences(fence1)
 zoo.add_fences(fence2)
