@@ -1,8 +1,8 @@
 class Zoo:
 
-    def __init__(self):
-        self.fences = []
-        self.zoo_keepers = []
+    def __init__(self,fences=[], zoo_keepers=[]):
+        self.fences = fences
+        self.zoo_keepers = zoo_keepers
 
     def add_zookeepers(self, keeper:str):
         self.zoo_keepers.append(keeper)
@@ -40,7 +40,7 @@ class ZooKeeper:
     def __str__(self):
         return f"Zookeeper(name={self.name}, surname={self.surname}, id={self.id})"
     
-zoo = Zoo()
+zoo = Zoo(fences=[], zoo_keepers=[])
 
 keeper1:ZooKeeper = ZooKeeper("Lorenzo","Maggi",1234)
 zoo.add_zookeepers(keeper1)
