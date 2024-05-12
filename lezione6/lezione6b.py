@@ -106,27 +106,30 @@ print(restaurant.open_restaurant())
 
 '''
 9-3. Users: Make a class called User. Create two attributes called first_name and last_name, and then create several other attributes that are typically stored in a user profile. Make a method called describe_user() that prints a summary of the user’s information. Make another method called greet_user() that prints a personalized greeting to the user. Create several instances representing different users, and call both methods for each user.
+9-5. Login Attempts: Add an attribute called login_attempts to your User class from Exercise 9-3. Write a method called increment_login_attempts() that increments the value of login_attempts by 1. Write another method called reset_login_attempts() that resets the value of login_attempts to 0. Make an instance of the User class and call increment_login_attempts() several times. Print the value of login_attempts to make sure it was incremented properly, and then call reset_login_attempts(). Print login_attempts again to make sure it was reset to 0.
 '''
 class User:
-    def __init__(self, first_name:str, last_name:str, password:str, login_attempts:int=0):
+    def __init__(self, first_name:str, last_name:str, password:str, login_attempts:int):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
         self.login_attempts = login_attempts
     
     def description_user(self):
-        return f"First name = {self.first_name.capitalize()}\nLast name = {self.last_name.capitalize()}\nPassword = {self.password.capitalize()}\nLogin attempts = {self.login_attempts()}"
+        return f"First name = {self.first_name}\nLast name = {self.last_name}\nPassword = {self.password}\nLogin attempts = {self.login_attempts}"
     
     def greet_user(self):
         return f"Hello {self.first_name.capitalize()}, welcome on our site"
     
     def increment_login_attempts(self):
         self.login_attempts += 1
-
     
-user = User("Marco", "Rossi", "VzXe45%")
-user1 = User("Mario", "Verdi", "HGTyu76")
-user2 = User("Laura", "Neri", "ERWLAu7")
+    def reset_login_attempts(self, new_login_attempts = 0):
+        self.login_attempts = new_login_attempts
+    
+user = User("Marco", "Rossi", "VzXe45%",11)
+user1 = User("Mario", "Verdi", "HGTyu76",13)
+user2 = User("Laura", "Neri", "ERWLAu7",15)
 print(user.description_user())
 print(user.greet_user())
 print()
@@ -136,8 +139,74 @@ print()
 print(user2.description_user())
 print(user2.greet_user())
 user3 = User("Gianni", "Storti", "Hertu74", 10)
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+print(user3.description_user())
+user3.reset_login_attempts()
+print(user3.description_user())
+
+'''
+9-4. Number Served: Start with your program from Exercise 9-1. Add an attribute called number_served with a default value of 0. Create an instance called restaurant from this class. Print the number of customers the restaurant has served, and then change this value and print it again. Add a method called set_number_served() that lets you set the number of customers that have been served. Call this method with a new number and print the value again. Add a method called increment_number_served() that lets you increment the number of customers who’ve been served. Call this method with any number you like that could represent how many customers were served in, say, a day of business. 
+'''
+
+class Restaurant:
+    def __init__(self,name:str,cuisine_type:str, number_served=0):
+        self.name = name
+        self.cuisine_type = cuisine_type
+        self.number_served = number_served
+    
+    def description_restaurant(self):
+        return f"{self.name}, {self.cuisine_type}, {self.number_served}"
+    
+    def open_restaurant(self):
+        return f"The restaurant {self.name} is open"
+    
+    def set_number_served(self,new_number_served:int):
+        self.number_served = new_number_served
+    
+    def increment_number_served(self):
+        self.number_served += 23
 
 
+restaurant = Restaurant("Da Pippo", "Pizzeria", number_served=20)
+print(restaurant.description_restaurant())
+restaurant.set_number_served(22)
+print(restaurant.description_restaurant())
+restaurant.increment_number_served()
+print(restaurant.description_restaurant())
 
+'''
+9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. Write a class called IceCreamStand that inherits from the Restaurant class you wrote in Exercise 9-1  or Exercise 9-4. Either version of the class will work; just pick the one you like better. Add an attribute called flavors that stores a list of ice cream flavors. Write a method that displays these flavors. Create an instance of IceCreamStand, and call this method.
+'''
 
+class Restaurant:
+    def __init__(self,name:str,cuisine_type:str):
+        self.name = name
+        self.cuisine_type = cuisine_type
+    
+    def description_restaurant(self):
+        return f"{self.name.capitalize()}, {self.cuisine_type.capitalize()}"
+    
+    def open_restaurant(self):
+        return f"The restaurant {self.name} is open"
 
+restaurant = Restaurant("Da Pippo", "Pizzeria")
+print(restaurant.description_restaurant())
+print(restaurant.open_restaurant())
+
+class IceCreamStand(Restaurant):
+    def __init__(self, name: str, cuisine_type: str, flavors:list):
+        super().__init__(name, cuisine_type)
+        self.flavors = flavors
+    
+    def __str__(self):
+        return super().__str__()
+
+ice_cream = IceCreamStand("Da Pippo", "Pizzeria", ["chocolate","strawberry","vanilla"])
+print(ice_cream.flavors)
+
+'''
+9-7. Admin: An administrator is a special kind of user. Write a class called Admin that inherits from the User class you wrote in Exercise 9-3 or Exercise 9-5. Add an attribute, privileges, that stores a list of strings like "can add post", "can delete post", "can ban user", and so on. Write a method called show_privileges() that lists the administrator’s set of privileges. Create an instance of Admin, and call your method. 
+'''
