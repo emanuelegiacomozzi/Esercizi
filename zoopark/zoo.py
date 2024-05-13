@@ -105,9 +105,10 @@ class ZooKeeper(Fence):
     def clean(self,fence:Fence):
         self.fence = fence
         if fence.area == 0:
-            return fence.area
-        else:
-            return 
+            print("The fence is clean.")
+        cleaning_time = fence.area / (fence.area + (fence.temperature * 2)) 
+        fence.area = 0  
+        print(f"{self.name} {self.surname} cleaned the fence. Cleaning time: {cleaning_time}")
 
     def describe_zoo(self,zoo:Zoo):
         zoo.describe_zoo()
@@ -116,23 +117,23 @@ class ZooKeeper(Fence):
 zoo = Zoo()
 
 keeper1 = ZooKeeper("Lorenzo", "Maggi", 1234)
+keeper2 = ZooKeeper("Gianni", "Rossi", 1324)
 fence1 = Fence(200, 20, "Tropical")
+fence2 = Fence(400, 2, "Polar")
 animal1 = Animal("Bird", "Canarino", 4, 0.15, 1, "Tropical")
+animal2 = Animal("Wolf", "Grey", 23, 1.30, 120, "Tropical")
+animal3 = Animal("Bear", "Grizzly", 7, 1.90, 300, "Tropical")
 fence1._animals(animal1)
+fence1._animals(animal2)
+fence2._animals(animal3)
 keeper1.add_fences(fence1)
-animal2 = Animal("Wolf", "Black", 10, 1.40, 20, "Tropical")
-keeper1.add_animals(animal2,fence1)
-keeper1.remove_animal(animal1,fence1)
-
-keeper2 = ZooKeeper("Carlo", "Conti", 1235)
-fence2 = Fence(600, 1, "Polar")
 keeper2.add_fences(fence2)
-animal3 = Animal("Horse", "Black", 10, 2.15, 22, "Polar")
-keeper2.add_animals(animal3, fence2)
-animal4 = Animal("Bear","Grizzly",20, 1.90, 20, "Polar")
-keeper2.add_animals(animal4, fence2)
-keeper2.feed_animal(fence2)
+
+
+
 keeper1.feed_animal(fence1)
+keeper2.feed_animal(fence2)
+keeper1.clean(fence1)
 
 zoo.zookeepers(keeper1)
 zoo.zookeepers(keeper2)
@@ -140,7 +141,8 @@ zoo._fences(fence1)
 zoo._fences(fence2)
 
 keeper1.describe_zoo(zoo)
-keeper2.describe_zoo(zoo)
+
+
 
 
 
