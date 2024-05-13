@@ -210,3 +210,138 @@ print(ice_cream.flavors)
 '''
 9-7. Admin: An administrator is a special kind of user. Write a class called Admin that inherits from the User class you wrote in Exercise 9-3 or Exercise 9-5. Add an attribute, privileges, that stores a list of strings like "can add post", "can delete post", "can ban user", and so on. Write a method called show_privileges() that lists the administrator’s set of privileges. Create an instance of Admin, and call your method. 
 '''
+
+class User:
+    def __init__(self, first_name:str, last_name:str, password:str, login_attempts:int):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+        self.login_attempts = login_attempts
+    
+    def description_user(self):
+        return f"First name = {self.first_name}\nLast name = {self.last_name}\nPassword = {self.password}\nLogin attempts = {self.login_attempts}"
+    
+    def greet_user(self):
+        return f"Hello {self.first_name.capitalize()}, welcome on our site"
+    
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+    
+    def reset_login_attempts(self, new_login_attempts = 0):
+        self.login_attempts = new_login_attempts
+
+class Admin(User):
+    def __init__(self, first_name: str, last_name: str, password: str, login_attempts: int, privileges:list[str]):
+        super().__init__(first_name, last_name, password, login_attempts)
+        self.privileges = privileges
+
+    def show_privileges(self):
+        for privilege in self.privileges:
+            print(privilege)
+
+    
+user = User("Marco", "Rossi", "VzXe45%",11)
+user1 = User("Mario", "Verdi", "HGTyu76",13)
+user2 = User("Laura", "Neri", "ERWLAu7",15)
+print(user.description_user())
+print(user.greet_user())
+print()
+print(user1.description_user())
+print(user1.greet_user())
+print()
+print(user2.description_user())
+print(user2.greet_user())
+user3 = User("Gianni", "Storti", "Hertu74", 10)
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+user3.increment_login_attempts()
+print(user3.description_user())
+user3.reset_login_attempts()
+print(user3.description_user())
+admin = Admin("Franco", "Franchi", "000000", 10, ["You can eliminate post", "You can add post", "You can exclude a post"])
+admin.show_privileges()
+
+
+'''
+9-8. Privileges: Write a separate Privileges class. The class should have one attribute, privileges, that stores a list of strings as described in Exercise 9-7. Move the show_privileges() method to this class. Make a Privileges instance as an attribute in the Admin class. Create a new instance of Admin and use your method to show its privileges.
+'''
+class User:
+    def __init__(self, first_name:str, last_name:str, password:str, login_attempts:int):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+        self.login_attempts = login_attempts
+    
+    def description_user(self):
+        return f"First name = {self.first_name}\nLast name = {self.last_name}\nPassword = {self.password}\nLogin attempts = {self.login_attempts}"
+    
+    def greet_user(self):
+        return f"Hello {self.first_name.capitalize()}, welcome on our site"
+    
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+    
+    def reset_login_attempts(self, new_login_attempts = 0):
+        self.login_attempts = new_login_attempts
+
+class Admin(User):
+    def __init__(self, first_name: str, last_name: str, password: str, login_attempts: int, privileges:list[str]):
+        super().__init__(first_name, last_name, password, login_attempts)
+        self.privileges = Privileges(privileges)
+
+    def show_privileges(self):
+        self.privileges.show_privileges()
+
+class Privileges:
+
+    def __init__(self, privileges:list[str]):
+        self.privileges = privileges
+        
+    def show_privileges(self):
+        print("Privileges: ")
+        for privilege in self.privileges:
+            print(privilege)
+
+
+admin = Admin("Franco", "Franchi", "000000", 10, ["You can eliminate post", "You can add post", "You can exclude a post"])
+admin.show_privileges()
+
+'''
+9-10. Imported Restaurant: Using your latest Restaurant class, store it in a module. Make a separate file that imports Restaurant. Make a Restaurant instance, and call one of Restaurant’s methods to show that the import statement is working properly.
+'''
+
+'''
+9-11. Imported Admin: Start with your work from Exercise 9-8. Store the classes User, Privileges, and Admin in one module. Create a separate file, make an Admin instance, and call show_privileges() to show that everything is working correctly.
+'''
+
+'''
+9-13. Dice: Make a class Die with one attribute called sides, which has a default value of 6. Write a method called roll_die() that prints a random number between 1 and the number of sides the die has. Make a 6-sided die and roll it 10 times. Make a 10-sided die and a 20-sided die. Roll each die 10 times.
+'''
+import random 
+
+class Die:
+    def __init__(self,sides:int=6):
+        self.sides = sides
+    
+    def roll_die(self):
+        return random.randint(1,self.sides)
+
+die6 = Die()
+print("roll a 6 die 10 times:")
+for side in range(10):
+    print(die6.roll_die())
+
+die10 = Die(10)
+print("\nroll a 10 die 10 times:")
+for side in range(10):
+    print(die10.roll_die())
+
+die20 = Die(20)
+print("\nroll a 20 die 10 times:")
+for side in range(10):
+    print(die20.roll_die())
+
+
+
+
