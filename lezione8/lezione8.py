@@ -49,3 +49,4 @@ gatto1 = Cat(nome="Fufu", specie="Siamese", età=5)
 print(gatto1)
 rabbit1 = Rabbit(nome="Gigi", specie="Grigio", età=3)
 print(rabbit1)
+
