@@ -28,7 +28,7 @@ class Zoo:
 
 class Fence:
     
-    def __init__(self, area:int, temperature:int, habitat:str):
+    def __init__(self, area:float, temperature:int, habitat:str):
         self.area = area
         self.temperature = temperature
         self.habitat = habitat
@@ -57,7 +57,7 @@ class Animal:
         return f"Animal(name={self.name}, species={self.species}, age={self.age}, height={self.height}, width={self.width}, preferred_habitat={self.preferred_habitat})"
 
     
-class ZooKeeper(Fence):
+class ZooKeeper:
         
     def __init__(self,  name:str, surname:str, id:int):
         self.name = name
@@ -91,24 +91,26 @@ class ZooKeeper(Fence):
             fence.area += animal.height * animal.width
             print(f"{animal.name} removed from the {fence.habitat} fence.")
     
-    def feed_animal(self,fence:Fence):
-        for animal in fence.animals:
-            if fence.area >= animal.height * animal.width:
-                animal.health *= (1 + 1/100)
-                animal.height *= (1 + 2/100)
-                animal.width *= (1 + 2/100)
-                print(f"{animal.name} fed. Health = {animal.health}. Height = {animal.height}. Width = {animal.width}")
-                fence.area -= animal.height * animal.width 
-            else:
-                print(f"No space to feed {animal.name} in the {fence.habitat} fence")
+    def feed_animal(self,animal:Animal):
+        self.animal = animal
+        for fence in self.fences:
+            if animal in fence.animals:
+                if fence.area >= animal.height * animal.width:
+                    animal.health *= (1 + 1/100)
+                    animal.height *= (1 + 2/100)
+                    animal.width *= (1 + 2/100)
+                    print(f"{animal.name} fed. Health = {animal.health}. Height = {animal.height}. Width = {animal.width}")
+                    fence.area -= animal.height * animal.width 
+                else:
+                    print(f"No space to feed {animal.name} in the {fence.habitat} fence")
     
     def clean(self,fence:Fence):
         self.fence = fence
         if fence.area == 0:
             print("The fence is clean.")
-        cleaning_time = fence.area / (fence.area + (fence.temperature * 2)) 
+        cleaning_time:float = fence.area / (fence.area + (fence.temperature * 2)) 
         fence.area = 0  
-        print(f"{self.name} {self.surname} cleaned the fence. Cleaning time: {cleaning_time}")
+        print(f"{self.name} {self.surname} cleaned the {fence.habitat} fence. Cleaning time: {cleaning_time}")
 
     def describe_zoo(self,zoo:Zoo):
         zoo.describe_zoo()
@@ -122,18 +124,18 @@ fence1 = Fence(200, 20, "Tropical")
 fence2 = Fence(400, 2, "Polar")
 animal1 = Animal("Bird", "Canarino", 4, 0.15, 1, "Tropical")
 animal2 = Animal("Wolf", "Grey", 23, 1.30, 120, "Tropical")
-animal3 = Animal("Bear", "Grizzly", 7, 1.90, 300, "Tropical")
+animal3 = Animal("Bear", "Grizzly", 7, 1.90, 200, "Polar")
 fence1._animals(animal1)
-fence1._animals(animal2)
-fence2._animals(animal3)
+keeper2.add_animals(animal3,fence2)
+keeper1.add_animals(animal2, fence1)
 keeper1.add_fences(fence1)
 keeper2.add_fences(fence2)
 
 
 
-keeper1.feed_animal(fence1)
-keeper2.feed_animal(fence2)
-keeper1.clean(fence1)
+
+
+
 
 zoo.zookeepers(keeper1)
 zoo.zookeepers(keeper2)
