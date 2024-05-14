@@ -109,8 +109,7 @@ class ZooKeeper:
         if fence.area == 0:
             print("The fence is clean.")
             return fence.area
-        cleaning_time:float = fence.area / (sum(animal.height * animal.width for animal in fence.animals))
-        fence.area = 0
+        cleaning_time:float = (sum(animal.height * animal.width for animal in fence.animals)) / fence.area 
         print(f"{self.name} {self.surname} cleaned the {fence.habitat} fence. Cleaning time: {cleaning_time}")
         return cleaning_time
     
@@ -123,17 +122,19 @@ zoo = Zoo()
 keeper1 = ZooKeeper("Lorenzo", "Maggi", 1234)
 keeper2 = ZooKeeper("Gianni", "Rossi", 1324)
 fence1 = Fence(200, 20, "Tropical")
-fence2 = Fence(400, 2, "Polar")
+fence2 = Fence(200, 2, "Polar")
 animal1 = Animal("Bird", "Canarino", 4, 0.15, 1, "Tropical")
-animal2 = Animal("Wolf", "Grey", 23, 1.30, 120, "Tropical")
-animal3 = Animal("Bear", "Grizzly", 7, 1.90, 200, "Polar")
+animal2 = Animal("Wolf", "Grey", 23, 1.30, 120, "Polar")
+animal3 = Animal("Bear", "Grizzly", 7, 1.90, 10, "Polar")
 fence1._animals(animal1)
 keeper2.add_animals(animal3,fence2)
-keeper1.add_animals(animal2, fence1)
 keeper1.add_fences(fence1)
 keeper2.add_fences(fence2)
+keeper2.add_animals(animal2,fence2)
 
 keeper1.feed_animal(animal1)
+keeper2.clean(fence2)
+
 
 
 
