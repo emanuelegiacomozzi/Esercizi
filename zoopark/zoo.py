@@ -79,9 +79,7 @@ class ZooKeeper:
         if fence.area >= animal.height * animal.width and animal.preferred_habitat == fence.habitat:
             fence.animals.append(animal)
             fence.area -= animal.height * animal.width 
-            return fence.area
-        else:
-            return fence.area
+        
 
     def remove_animal(self, animal:Animal, fence:Fence):
         self.animal = animal
@@ -89,7 +87,7 @@ class ZooKeeper:
         if animal in fence.animals:
             fence.animals.remove(animal)
             fence.area += animal.height * animal.width
-            return fence.area
+           
     
     def feed_animal(self,animal:Animal):
         self.animal = animal
@@ -100,7 +98,7 @@ class ZooKeeper:
                     animal.height *= (1 + 2/100)
                     animal.width *= (1 + 2/100)
                     fence.area -= animal.height * animal.width 
-                    return fence.area
+                    
     
     def clean(self,fence:Fence):
         self.fence = fence
