@@ -116,3 +116,40 @@ faharenheit = 20
 print("Da celsius a faharenheit = ", converti_temperatura(celsius, conversione=True))
 print("Da faharenheit a celsius = ",converti_temperatura(faharenheit,conversione=True))
 
+'''
+12. Scrivi una funzione che somma tutti i numeri interi di una lista che sono maggiori di un dato valore intero definito threshold.
+'''
+def somma_lista(lista:list[int]):
+    thresold:int = int(input("Inserisci valore: "))
+    somma = 0
+    for num in lista:
+        if num > thresold:
+            somma += num
+    return somma
+print("Somma = ", somma_lista([1,4,5,12,45,6,8,9]))
+
+'''
+13. Scrivi una funzione che, data una lista, ritorni un dictionary che mappa ogni elemento alla sua frequenza nella lista.
+'''
+def frequency_dict(elements:list):
+    dizionario = {}
+    for element in elements:
+        x = elements.count(element)
+        dizionario[element] = x
+    return dizionario
+print(frequency_dict([2,3,4,2,3,4,4]))
+
+'''
+14. Scrivi una funzione che ritorna un dizionario che unisce due dizionari. Se una chiave è presente in entrambi, somma i loro valori nel nuovo dizionario.
+'''
+def unisci_dizionari(dict1:dict, dict2:dict):
+    dict3 = {}
+    dict3["Dizionario 1"] = dict1
+    dict3["Dizionario 2"] = dict2 
+    
+    for key in dict1:
+        for key in dict2:
+            if key in dict1 and key in dict2:
+                key += key
+        
+
