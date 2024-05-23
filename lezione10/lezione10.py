@@ -73,6 +73,45 @@ print(frequency_dict([2,3,4,2,3,4,4]))
 def seconds_since_noon(ore:int,min:int,sec:int):
     secondi_totali = ore*3600 + min*60 + sec
     return secondi_totali
-print(seconds_since_noon(3,15,50))
 
+def time_difference(ora1:int, min1:int, sec1:int, ora2:int, min2:int, sec2:int):
+    secondi_totali = seconds_since_noon(ora1, min1, sec1)
+    secondi_totali2 = seconds_since_noon(ora2, min2, sec2)
+    if secondi_totali2 > secondi_totali:
+        return secondi_totali2 - secondi_totali
+    else:
+        return secondi_totali - secondi_totali2
+print(time_difference(1, 0, 0, 3, 15, 30))
+
+#esercizio 8
+#tempo 0 ----> altezza zero, velocita = 100 cm/s
+#s1 --> altezza = altezza + velocità
+#s1 ---> velocità = velocità-96
+#se valore altezza < 0 ---> altezza * -0.5, velocità*-0,5
+def rimbalzo() -> None:
+    
+    tempo: int = 0
+    altezza: float = 0.0
+    velocita: float = 100.0
+    rimbalzi: int = 0
+
+    while rimbalzi < 5:
+        print(f"Tempo: {tempo} Altezza: {altezza}")
+        altezza += velocita
+        velocita -= 96 
+        tempo += 1
+
+        if altezza < 0:
+            altezza *= -0.5
+            velocita *= -0.5   
+            print(f"Tempo: {tempo} Rimbalzo!")
+            rimbalzi += 1 
+            tempo += 1
+rimbalzo()
+        
+
+
+
+    
+    
 
