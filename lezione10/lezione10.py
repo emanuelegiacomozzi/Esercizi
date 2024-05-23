@@ -108,7 +108,22 @@ def rimbalzo() -> None:
             rimbalzi += 1 
             tempo += 1
 rimbalzo()
-        
+
+#esercizio 9
+def memorizza_file(files: list[int]) -> None:
+    spazio_totale_blocchi = 1000  # Spazio totale disponibile in blocchi
+    dimensione_blocco = 512
+    for dimensione_non_compressa in files:
+        dimensione_compressa = dimensione_non_compressa * 0.80
+        blocchi_necessari = round(dimensione_compressa / dimensione_blocco)
+
+        if blocchi_necessari <= spazio_totale_blocchi:
+            spazio_totale_blocchi -= blocchi_necessari
+            print(f"File di {dimensione_non_compressa} byte compresso in {dimensione_compressa} byte e memorizzato. Blocchi usati: {blocchi_necessari}. Blocchi rimanenti: {spazio_totale_blocchi}.")
+        else:
+            print(f"Non è possibile memorizzare il file di {dimensione_non_compressa} byte. Spazio insufficiente.")
+            break
+memorizza_file([1100, 20000, 1048576, 512, 5000])
 
 
 
