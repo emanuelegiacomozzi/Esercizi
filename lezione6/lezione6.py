@@ -71,5 +71,3 @@ print(dipendente1.calcola_stipendio())
 
 
 print(professore1.ore_lezione)
-
-
