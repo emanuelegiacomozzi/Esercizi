@@ -1,3 +1,18 @@
+def unisci_dizionari(dict1:dict, dict2:dict):
+    dict3 = {}
+    dict3["Dizionario 1"] = dict1
+    dict3["Dizionario 2"] = dict2 
+    for key,value in dict1.items():
+        for key1,value1 in dict2.items():
+            if key in dict1 == key1 in dict2:
+                somma = value + value1
+                dict3["Somma chiavi"] = somma
+    return dict3
+dict1 = {"A": 23, "B": 45, "C":12, "D":8}
+dict2 = {"F": 24, "A":34, "C":13, "E":3}
+print(unisci_dizionari(dict1, dict2))
+
+
 '''
 1 Scrivi una funzione che prenda un dizionario e un valore, e ritorni la prima chiave che corrisponde a quel valore, o None se il valore non è presente.
 '''
@@ -146,10 +161,37 @@ def unisci_dizionari(dict1:dict, dict2:dict):
     dict3 = {}
     dict3["Dizionario 1"] = dict1
     dict3["Dizionario 2"] = dict2 
-    
-    for key in dict1:
-        for key in dict2:
-            if key in dict1 and key in dict2:
-                key += key
+    for key,value in dict1.items():
+        for key1,value1 in dict2.items():
+            if key in dict1 == key1 in dict2:
+                somma = value + value1
+                dict3["Somma chiavi"] = somma
+    return dict3
+dict1 = {"A": 23, "B": 45, "C":12, "D":8}
+dict2 = {"F": 24, "A":34, "C":13, "E":3}
+unisci_dizionari(dict1, dict2) 
+
+'''
+15. Scrivi una funzione che, dato un insieme e una lista di numeri interi da rimuovere, ritorni un nuovo insieme senza i numeri specificati nella lista.
+'''
+def set_list(s:set, l:list):
+    new_set = set()
+    for num in s:
+        if num not in l:
+            new_set.add(num)
+    return new_set
+print(set_list({1,2,4,5,7}, [2,5]))
+
+'''
+16. Scrivi una funzione che ritorna il valore massimo, minimo e la media di una lista di numeri interi.
+'''
+def min_max_avg(l:list[int]):
+    numero_max = max(l)
+    numero_min = min(l)
+    somma = sum(l)
+    avg:float = somma / len(l)
+    return f"Numero massimo: {numero_max}\nNumero minimo: {numero_min}\nLa media è: {avg}"
+print(min_max_avg([2,4,7,6,2]))
+            
         
 
