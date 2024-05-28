@@ -1,17 +1,16 @@
 import random
 
-def posizioni(percorso, posizione_t, posizione_h):
-    percorso[0] =  posizione_t, posizione_h
+def posizioni(percorso, tartaruga, lepre):
+    percorso[0] =  tartaruga, lepre
     return percorso
 
 percorso = ['_']*70
-posizione_t = 'T'
-posizione_h = 'H'
-print(posizioni())
+tartaruga = 'T'
+lepre = 'H'
+print(posizioni(percorso,tartaruga,lepre))
 
-def mosse_tartaruga():
+def mosse_tartaruga(posizione_t):
     i:int = random.randint(1,10)
-    posizione_t = 0
     if 1 <= i <= 5:
         posizione_t += 3
     elif 6 <= i <= 7:
@@ -21,9 +20,11 @@ def mosse_tartaruga():
     else:
         posizione_t += 1
     return posizione_t
+posizione_t = 0
+print(mosse_tartaruga(posizione_t))
 
 
-def mosse_lepre():
+def mosse_lepre(posizione_h):
     i:int = random.randint(1,10)
     posizione_h = 0
     if 1 <= i <= 2:
@@ -39,6 +40,8 @@ def mosse_lepre():
     elif i < 1:
         posizione_h = 1
     return posizione_h
+posizione_h = 0
+print(mosse_lepre(posizione_h))
 
 def inizia_gara():
     print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
