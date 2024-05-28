@@ -1,13 +1,13 @@
 import random
 
-def posizioni(percorso, tartaruga, lepre):
-    percorso[0] =  tartaruga, lepre
+def posizioni(percorso, posizione_t, posizione_h):
+    percorso[0] = posizione_t
+    percorso[0] = posizione_h
     return percorso
-
 percorso = ['_']*70
-tartaruga = 'T'
-lepre = 'H'
-print(posizioni(percorso,tartaruga,lepre))
+posizione_t = 'T'
+posizione_h = 'H'
+print(posizioni(percorso, posizione_t, posizione_h))
 
 def mosse_tartaruga(posizione_t):
     i:int = random.randint(1,10)
@@ -20,8 +20,7 @@ def mosse_tartaruga(posizione_t):
     else:
         posizione_t += 1
     return posizione_t
-posizione_t = 0
-print(mosse_tartaruga(posizione_t))
+
 
 
 def mosse_lepre(posizione_h):
@@ -40,22 +39,24 @@ def mosse_lepre(posizione_h):
     elif i < 1:
         posizione_h = 1
     return posizione_h
-posizione_h = 0
-print(mosse_lepre(posizione_h))
 
-def inizia_gara():
+
+def gara():
+    posizione_t = 1
+    posizione_h = 1
     print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
-
-while True:
-    if posizione_t >= 70:
-        print("TORTOISE WINS! || VAY!!!")
-        break
-    elif posizione_h >= 70:
-        print("HARE WINS || YUCH!!!")
-        break
-    elif posizione_h >= 70 and posizione_t >= 70:
-        print("IT'S A TIE.")
-        break
+    while True:
+            posizione_t = mosse_tartaruga(posizione_t)
+            posizione_h = mosse_lepre(posizione_h)
+            if posizione_t >= 70:
+                print("TORTOISE WINS! || VAY!!!")
+                break
+            elif posizione_h >= 70:
+                print("HARE WINS || YUCH!!!")
+                break
+            elif posizione_h >= 70 and posizione_t >= 70:
+                print("IT'S A TIE.")
+                break
 
 
 
