@@ -73,60 +73,6 @@ print(frequency_dict([2,3,4,2,3,4,4]))
 def seconds_since_noon(ore:int,min:int,sec:int):
     secondi_totali = ore*3600 + min*60 + sec
     return secondi_totali
-
-def time_difference(ora1:int, min1:int, sec1:int, ora2:int, min2:int, sec2:int):
-    secondi_totali = seconds_since_noon(ora1, min1, sec1)
-    secondi_totali2 = seconds_since_noon(ora2, min2, sec2)
-    if secondi_totali2 > secondi_totali:
-        return secondi_totali2 - secondi_totali
-    else:
-        return secondi_totali - secondi_totali2
-print(time_difference(1, 0, 0, 3, 15, 30))
+print(seconds_since_noon(3,15,50))
 
 #esercizio 8
-#tempo 0 ----> altezza zero, velocita = 100 cm/s
-#s1 --> altezza = altezza + velocità
-#s1 ---> velocità = velocità-96
-#se valore altezza < 0 ---> altezza * -0.5, velocità*-0,5
-def rimbalzo() -> None:
-    
-    tempo: int = 0
-    altezza: float = 0.0
-    velocita: float = 100.0
-    rimbalzi: int = 0
-
-    while rimbalzi < 5:
-        print(f"Tempo: {tempo} Altezza: {altezza}")
-        altezza += velocita
-        velocita -= 96 
-        tempo += 1
-
-        if altezza < 0:
-            altezza *= -0.5
-            velocita *= -0.5   
-            print(f"Tempo: {tempo} Rimbalzo!")
-            rimbalzi += 1 
-            tempo += 1
-rimbalzo()
-
-#esercizio 9
-def memorizza_file(files: list[int]) -> None:
-    spazio_totale_blocchi = 1000  # Spazio totale disponibile in blocchi
-    dimensione_blocco = 512
-    for dimensione_non_compressa in files:
-        dimensione_compressa = dimensione_non_compressa * 0.80
-        blocchi_necessari = round(dimensione_compressa / dimensione_blocco)
-
-        if blocchi_necessari <= spazio_totale_blocchi:
-            spazio_totale_blocchi -= blocchi_necessari
-            print(f"File di {dimensione_non_compressa} byte compresso in {dimensione_compressa} byte e memorizzato. Blocchi usati: {blocchi_necessari}. Blocchi rimanenti: {spazio_totale_blocchi}.")
-        else:
-            print(f"Non è possibile memorizzare il file di {dimensione_non_compressa} byte. Spazio insufficiente.")
-            break
-memorizza_file([1100, 20000, 1048576, 512, 5000])
-
-
-
-    
-    
-
