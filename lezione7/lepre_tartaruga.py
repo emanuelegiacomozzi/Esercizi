@@ -11,50 +11,71 @@ def posizioni(posizione_t, posizione_h):
             percorso[posizione_t - 1] = 'T'
     print(''.join(percorso))
 
-def mosse_tartaruga(tartaruga):
+def mosse_tartaruga(tartaruga,energia_t):
     i:int = random.randint(1,10)
     if 1 <= i <= 5:
-        tartaruga += 3
+        if energia_t >= 5:
+            tartaruga -= 3
+            energia_t -= 5
     elif 6 <= i <= 7:
-        tartaruga -= 6
+        if energia_t >= 10:
+            tartaruga -= 6
+            energia_t -= 10
     elif 8 <= i <= 10:
-        tartaruga += 1
+        if energia_t >= 3:
+            tartaruga += 1
+            energia_t -= 3
     if tartaruga < 1:
         tartaruga = 1
     if tartaruga > 70:
         tartaruga = 70
-    return tartaruga
+    if energia_t > 100:
+        energia_t = 100
+    return tartaruga, energia_t
 
 
 
-def mosse_lepre(lepre):
+def mosse_lepre(lepre,energia_h):
     i:int = random.randint(1,10)
     lepre = 0
     if 1 <= i <= 2:
-        pass
+        energia_h += 10
     elif 3 <= i <= 4:
-        lepre += 9
+        if energia_h >= 15:
+            lepre += 9
+            energia_h -= 15
     elif i == 5:
-        lepre -= 12
+        if energia_h >= 20:
+            lepre -= 12
+            energia_h -= 20
     elif 6 <= i <= 8:
-        lepre += 1
+        if energia_h >= 5:
+            lepre += 1
+            energia_h -= 5
     elif 9 <= i <= 10:
-        lepre -= 2
+        if energia_h >= 8:
+            lepre -= 2
+            energia_h -= 8
     if lepre < 1:
         lepre = 1
     if lepre > 70:
         lepre = 70
-    return lepre
+    if energia_h > 100:
+        energia_h = 100
+    return lepre, energia_h
 
 def gara():
+    energia_t = 100
+    energia_h = 100
     posizione_t = 1
     posizione_h = 1
     print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 
     while True:
-        posizione_t = mosse_tartaruga(posizione_t)
-        posizione_h = mosse_lepre(posizione_h)
+        posizione_t, energia_t = mosse_tartaruga(posizione_t, energia_t)
+        posizione_h, energia_h = mosse_lepre(posizione_h,energia_h)
         posizioni(posizione_t, posizione_h)
+        print(f"Energia Tartaruga: {energia_t}\nEnergia lepre: {energia_h}")
         if posizione_h >= 70 and posizione_t >= 70:
             print("IT'S A TIE.")
             break
