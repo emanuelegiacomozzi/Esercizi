@@ -7,51 +7,65 @@ class Film:
         self.durata = durata
     
     def __str__(self):
-        return(f"Titolo: {self.titolo}\nDurata: {self.durata}")
+        return f"Titolo: {self.titolo}\nDurata film: {self.durata}"
 
 class Sala:
-    
-    def __init__(self, id:int, film:Film, posti:int, posti_prenotati:int):
+
+    def __init__(self, id:int, film:str, posti_totali:int):
         self.id = id
         self.film = film
-        self.posti = posti
-        self.posti_prenotati = posti_prenotati
-    
+        self.posti_totali = posti_totali
+        self.posti_prenotati = 0
+
     def prenota_posti(self, num_posti:int):
-        self.num_posti = num_posti
-        self.prenotazione = int(input("Numeri di posti da prenotare: "))
-        if self.posti_prenotati == self.posti:
-            print("Prenotazione rifiutata. Posti occupati")
+        if num_posti <= self.posti_totali - self.posti_prenotati:
+            self.posti_prenotati += num_posti
+            return f"{num_posti} posti prenotati per il film '{self.film}' nella sala {self.id}."
         else:
-            print("Posti disponibili")
-        
-    def posti_disponibili(self):
-        self.posti_rimanenti =  self.posti_prenotati + self.prenotazione
-        self.posti -= self.posti_rimanenti
-        return self.posti
-
+            return "Errore: posti insufficienti disponibili."
     
-    def __str__(self):
-        return f"ID sala: {self.id}\nFilm in programmazzione: {self.film}\nPosti: {self.posti}\nPosti prenotati: {self.posti_prenotati}"
+    def posti_disponibili(self):
+         self.posti_totali - self.posti_prenotati
+         return f"Posti ancora disponibili: {self.posti_totali}"
 
+    def __str__(self):
+        return f"ID sala:{self.id}\nFilm in programmazione: {self.film}\nPosti Sala: {self.posti_totali}\nPosti prenotati: {self.posti_prenotati}"
+    
 class Cinema:
 
-    def __init__(self, nome:str):
-        self.nome = nome
+    def __init__(self):
         self.sale = []
     
     def aggiungi_sala(self, sala:Sala):
-        self.sala = sala
         self.sale.append(sala)
-    
-    def prenota_film(self, titolo_film:Film, num_posti:int):
-        self.titolo_film = titolo_film
-        self.num_posti = num_posti
 
-    def describe_cinema(self):
+    def prenota_film(self, titolo_film:Film, num_posti:Sala):
         for sala in self.sale:
-            print("Sale:")
-            print(sala)
+            if sala.film == titolo_film:
+                return sala.prenota_posti(num_posti)
+            else:
+                return "Film non trovato."
+    
+film1 = Film("Inception", 205)
+film2 = Film("Matrix", 195)
+print(film1)
+print(film2)
+
+sala1 = Sala(1234, film1, 40)
+sala2 = Sala(1235, film2, 35)
+print(sala1)
+print(sala2)
+
+sala1.prenota_posti(1)
+sala2.prenota_posti(4)
+print(sala1.posti_disponibili())
+print(sala2.posti_disponibili())
+
+cinema = Cinema()
+cinema.aggiungi_sala(sala1)
+cinema.aggiungi_sala(sala2)
+print(cinema.prenota_film("Inception", 40))
+print(cinema.prenota_film("Matrix", 40))
 
 
 #esercizio Magazzino
@@ -61,9 +75,13 @@ class Prodotto:
     def __init__(self, nome:str, quantità:int):
         self.nome = nome
         self.quantità = quantità
+    
+    def describe_magazzino(self):
+        for prodotto in self.prodotti:
+            print(prodotto)
 
     def __str__(self):
-        return f"Prodotto: {self.nome}\nQuantità: {self.quantità}"
+        return f"\nProdotto: {self.nome}\nQuantità: {self.quantità}"
 
 class Magazzino:
 
@@ -75,13 +93,18 @@ class Magazzino:
         self.prodotti.append(prodotto)
     
     def cerca_prodotto(self, nome:str):
-        self.nome = nome
-        if self.nome == self.prodotto.nome:
-            print(f"\n{self.nome} presente in magazzino")
-        else:
-            print("Prodotto non presente")
+        for prodotto in self.prodotti:
+            if prodotto.nome == nome:
+                return prodotto
+            else:
+                return None
     
-    def verifica_disponibiltà(self, nome:str)
+    def verifica_disponibilità(self, nome:str):
+        prodotto = self.cerca_prodotto(nome)
+        if prodotto in self.prodotti:
+            return f"{prodotto.nome} presente nel magazzino in quantità {prodotto.quantità}"
+        else:
+            return f"{prodotto.nome} non disponibile"
 
 magazzino = Magazzino()
 
@@ -93,4 +116,6 @@ print(prodotto2)
 magazzino.add_prodotto(prodotto1)
 magazzino.add_prodotto(prodotto2)
 
-magazzino.cerca_prodotto("Banana")
+print(magazzino.cerca_prodotto("Fragola"))
+
+print(magazzino.verifica_disponibilità("Banana"))
