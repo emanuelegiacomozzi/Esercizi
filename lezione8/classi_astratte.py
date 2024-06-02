@@ -130,3 +130,32 @@ print(member1)
 
 member1.return_book(divina_commedia)
 print(member1)
+
+class Library:
+
+    def __init__(self, total_books:int = 0) -> None:
+        self.books = []
+        self.members = []
+        self.total_books = total_books
+
+    def add_book(self, book):
+        self.books.append(book)
+        self.total_books += 1
+    
+    def remove_book(self, book):
+        if book in self.books:
+            self.books.remove(book)
+            self.total_books -= 1
+    
+    def register_member(self, member):
+        self.members.append(member)
+    
+    def lend_book(self, book, member):
+        if book in self.books:
+            if member in self.members:
+                member.borrow_books(book)
+                self.books.remove(book)
+    
+    
+
+
