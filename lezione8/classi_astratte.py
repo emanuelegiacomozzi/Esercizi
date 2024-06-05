@@ -130,3 +130,40 @@ print(member1)
 
 member1.return_book(divina_commedia)
 print(member1)
+
+#Exercise 4: University Management System
+
+class Person(ABC):
+
+    def __init__(self, name:str, age:int) -> None:
+        self.name = name
+        self.age = age
+
+    def get_role():
+
+        pass
+
+    def __str__(self):
+        return f"Name={self.name}, age={self.age}"
+    
+class Student(Person):
+
+    def __init__(self, name: str, age: int, student_id:str) -> None:
+        super().__init__(name, age)
+        self.student_id = student_id
+        self.courses = []
+    
+    def get_role(self):
+        return "Student"
+    
+    def enroll(self, course):
+        self.courses.append(course)
+        return self.courses
+    
+studente1 = Student(name="Pippo", age= 18, student_id=1234)
+print(studente1)
+
+print(studente1.get_role())
+
+print("Student1 courses:", studente1.enroll("Math"))
+print("Student1 course:", studente1.enroll("History"))
