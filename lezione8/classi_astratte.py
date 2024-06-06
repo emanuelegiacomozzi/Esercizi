@@ -156,6 +156,47 @@ class Library:
                 member.borrow_books(book)
                 self.books.remove(book)
     
+#Exercise 4: University Management System
+class Person(ABC):
+
+    def __init__(self, name:str,age:int):
+        self.name = name
+        self.age = age
     
+    @abstractmethod
+
+    def get_role():
+        pass
+
+    def __str__(self) -> str:
+        return f"Name={self.name}, Age={self.age}"
+
+class Student(Person):
+
+    def __init__(self, name: str, age: int, student_id:int):
+        super().__init__(name, age)
+
+        self.student_id = student_id
+        self.courses = []
+    
+    def get_role(self):
+        return "Student"
+
+    def enroll(self, course:str):
+        self.courses.append(course)
+        return self.courses
+
+    def __str__(self):
+        return f"Student: {self.name}, Age: {self.age}, Student id: {self.student_id}"
+
+student1 = Student(name="Franco", age=19, student_id=1234)
+print(student1)
+
+print(student1.get_role())
+print(student1.enroll("Maths"))
+
+
+
+
 
 
