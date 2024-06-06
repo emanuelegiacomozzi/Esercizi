@@ -130,3 +130,164 @@ print(member1)
 
 member1.return_book(divina_commedia)
 print(member1)
+
+
+#Exercise 4: University Management System
+
+class Person(ABC):
+
+    def __init__(self, name:str, age:int):
+        self.name = name
+        self.age = age
+    
+    @abstractmethod
+    def get_role():
+        pass
+
+    def __str__(self):
+        return f"Name={self.name}, Age={self.age}"
+    
+class Student(Person):
+
+    def __init__(self, name: str, age: int, student_id:int):
+        super().__init__(name, age)
+
+        self.student_id = student_id
+        self.courses = []
+    
+    def get_role(self):
+        return "Student"
+    
+    def enroll(self, course):
+        if course not in self.courses:
+            self.courses.append(course)
+            course.add_student(self)
+        return [str(course) for course in self.courses]
+
+    def __str__(self):
+        return f"Student: {self.name}, Age: {self.age}, ID: {self.student_id}"
+    
+class Professor(Person):
+
+    def __init__(self, name: str, age: int, department:str, professor_id:int):
+        super().__init__(name, age)
+
+        self.department = department
+        self.professor_id = professor_id
+        self.courses = []
+    
+    def get_role(self):
+        return "Professor"
+    
+    def assign_to_course(self, course):
+        if course not in self.courses:
+            self.courses.append(course)
+            course.set_professor(self)
+        return [str(course) for course in self.courses]
+    
+    def __str__(self):
+        return f"Professor: {self.name}, Age: {self.age}, ID: {self.professor_id}, Department: {self.department}"
+    
+class Course:
+
+    def __init__(self, course_name:str, course_code:str):
+        self.course_name = course_name
+        self.course_code = course_code
+        self.students = []
+        self.professor = None
+    
+    def add_student(self, student:Student):
+        if student not in self.students:
+            self.students.append(student)
+    
+    def set_professor(self, professor:Professor):
+        self.professors = professor
+    
+    def __str__(self):
+        return f"Course: {self.course_name}, Code: {self.course_code}"
+
+class Department:
+
+    def __init__(self, department_name:str):
+        self.department_name = department_name
+        self.courses = []
+        self.professors = []
+    
+    def add_course(self, course:Course):
+        if course not in self.courses:
+            self.courses.append(course)
+        return [str(course) for course in self.courses]
+    
+    def add_professor(self, professor:Professor):
+        if professor not in self.professors:
+            self.professors.append(professor)
+            professor.department = self.department_name
+        return [str(professor) for professor in self.professors]
+    
+    def __str__(self):
+        return f"Department: {self.department_name}"
+
+class University:
+
+    def __init__(self, name:str):
+
+        self.name = name
+        self.departments = []
+        self.students = []
+    
+    def add_department(self, department:Department):
+        if department not in self.departments:
+            self.departments.append(department)
+        return [str(department) for department in self.departments]
+
+    def add_students(self, student:Student):
+        if student not in self.students:
+            self.students.append(student)
+        return [str(student) for student in self.students]
+
+    def __str__(self):
+        return f"University: {self.name}"
+    
+university1 = University("LaSapienza")
+
+department1 = Department("Informatic")
+
+course1 = Course('Introduction to Programming', 'CS101')
+course2 = Course('Data Structures', 'CS102')
+
+# Create students
+student1 = Student('Alice', 20, 'S001')
+student2 = Student('Bob', 22, 'S002')
+
+# Create professor
+professor1 = Professor('Dr. Smith', 45, 'P001', 'Computer Science')
+
+print(university1.add_department(department1))
+print(university1.add_students(student1))
+print(university1.add_students(student2))
+
+print(department1.add_course(course1))
+print(department1.add_course(course2))
+
+print(department1.add_professor(professor1))
+# Enroll students in courses
+print(student1.enroll(course1))  # This will print the list of courses Alice is enrolled in
+print(student2.enroll(course1))  # This will print the list of courses Bob is enrolled in
+print(student2.enroll(course2))  # This will print the list of courses Bob is enrolled in
+
+# Assign professor to courses
+print(professor1.assign_to_course(course1))
+print(professor1.assign_to_course(course2))
+
+
+# Print details
+print(university1)
+print(department1)
+print(course1)
+print(course2)
+print(student1)
+print(student2)
+print(professor1)
+
+
+
