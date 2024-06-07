@@ -48,8 +48,6 @@ class Cinema:
     
 film1 = Film("Inception", 205)
 film2 = Film("Matrix", 195)
-print(film1)
-print(film2)
 
 sala1 = Sala(1234, film1, 40)
 sala2 = Sala(1235, film2, 35)
@@ -64,8 +62,8 @@ print(sala2.posti_disponibili())
 cinema = Cinema()
 cinema.aggiungi_sala(sala1)
 cinema.aggiungi_sala(sala2)
-print(cinema.prenota_film("Inception", 40))
-print(cinema.prenota_film("Matrix", 40))
+#print(cinema.prenota_film("Inception", 40))
+#print(cinema.prenota_film("Matrix", 40))
 
 
 #esercizio Magazzino
