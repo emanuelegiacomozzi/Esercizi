@@ -142,6 +142,37 @@ class Moto(Veicolo):
 
 #esercizio 4
 
+class Specie:
+
+    def __init__(self, nome:str, popolazione:int, tasso_crescita:float):
+
+        self.nome = nome
+        self.popolazione = popolazione
+        self.tasso_crescita = tasso_crescita
+
+    def cresci(self):
+
+        popolazione_attuale = self.popolazione
+        popolazione_nuova = popolazione_attuale * (1 + self.tasso_crescita/100)
+        return popolazione_nuova
+
+class BufaloKlingon(Specie):
+
+    def __init__(self, popolazione: int, tasso_crescita: float):
+        super().__init__(popolazione, tasso_crescita)
+
+        self.nome = "Bufalo Klingon"
+
+class Elefante(Specie):
+
+    def __init__(self, popolazione: int, tasso_crescita: float):
+        super().__init__(popolazione, tasso_crescita)
+
+        self.nome = "Elefante"
+    
+
+bufalo_klingon = BufaloKlingon(100, 15)
+elefante = Elefante(10, 35)
 
 
 
