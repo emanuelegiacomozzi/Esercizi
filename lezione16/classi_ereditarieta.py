@@ -152,9 +152,29 @@ class Specie:
 
     def cresci(self):
 
-        popolazione_attuale = self.popolazione
-        popolazione_nuova = popolazione_attuale * (1 + self.tasso_crescita/100)
+        self.popolazione_attuale = self.popolazione
+        popolazione_nuova = self.popolazione_attuale * (1 + self.tasso_crescita/100)
         return popolazione_nuova
+    
+    def anni_per_superare(self, altra_specie):
+        anni = 0
+        while self.popolazione <= altra_specie.popolazione and anni < 1000:
+            self.aggiorna_popolazione()
+            altra_specie.aggiorna_popolazione()
+            anni += 1
+        if anni == 1000:
+            return -1 
+        return anni
+    
+    def getDensita(self,area_kmq:float):
+        anni = 0
+        densità = self.popolazione / area_kmq
+        while densità < 1 and anni < 1000:
+            self.aggiorna_popolazione()
+            anni += 1
+        if anni == 1000:
+            return -1
+        return anni
 
 class BufaloKlingon(Specie):
 
@@ -173,6 +193,9 @@ class Elefante(Specie):
 
 bufalo_klingon = BufaloKlingon(100, 15)
 elefante = Elefante(10, 35)
+
+anni_necessari = elefante.anni_per_superare(bufalo_klingon)  # Calcola gli anni necessari affinché gli elefanti superino i bufali Klingon
+print(f"Anni necessari perché la popolazione di elefanti superi quella dei bufali Klingon: {anni_necessari}")
 
 
 
