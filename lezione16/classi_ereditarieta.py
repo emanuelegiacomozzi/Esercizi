@@ -9,17 +9,24 @@ class Contatore:
     
     def add1(self):
         self.conteggio += 1
-    
-    def sub1(self):
-        self.conteggio -= 1
-        if self.conteggio == 0:
-            return f"Non è possibile eseguire la sottrazione Conteggio attuale: 0"
+        return f"Conteggio attuale: {self.conteggio}"
 
+    def sub1(self):
+        if self.conteggio > 0:
+            self.conteggio -= 1
+            return f"Conteggio attuale: {self.conteggio}"
+        else:
+            print("Non è possibile eseguire la sottrazione")
+
+        
+        
     def get(self):
         return self.conteggio
 
     def mostra(self):
-        print(self.get())
+        print(f"Conteggio attuale: {self.get()}")
+    
+
     
 c = Contatore()  
 c.add1() 
@@ -89,14 +96,6 @@ class RecipeManager:
                 return "Errore"
             
 
-     
-        
-
-
-         
-        
-
-
 manager = RecipeManager()
 print(manager.create_recipe("Pizza margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
 print(manager.add_ingredient("Pizza Margherita", "Basilico"))
@@ -105,5 +104,44 @@ print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di
 print(manager.list_recipes())
 print(manager.list_ingredients("Pizza Margherita"))
 print(manager.search_recipe_by_ingredient("Farina"))
+
+
+#esercizio 3
+
+class Veicolo:
+    
+    def __init__(self, marca:str, modello:str, anno:int):
+        
+        self.marca = marca
+        self.modello = modello
+        self.anno = anno
+    
+    def descrivi_veicolo(self):
+        
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}")
+
+class Auto(Veicolo):
+    
+    def __init__(self, marca, modello, anno, numero_porte:int):
+        super().__init__(marca, modello, anno)
+        self.numero_porte = numero_porte
+    
+    def descrivi_veicolo(self):
+        
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Numero di porte: {self.numero_porte}")
+
+class Moto(Veicolo):
+    
+    def __init__(self, marca, modello, anno, tipo:str):
+        super().__init__(marca, modello, anno)
+        self.tipo = tipo
+    
+    def descrivi_veicolo(self):
+        
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Tipo: {self.tipo}")
+
+#esercizio 4
+
+
 
 
