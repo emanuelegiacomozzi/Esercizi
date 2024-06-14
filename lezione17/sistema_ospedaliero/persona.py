@@ -46,11 +46,7 @@ class Persona:
 
 
 
-persona = Persona(first_name="Gianni", last_name ="Rossi")
-persona.setName("Giacomo")
-persona.setLastName("Vacci")
-persona.setAge(19)
-persona.greet()
+
 
 
 
