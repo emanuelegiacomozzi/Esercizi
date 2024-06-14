@@ -18,8 +18,34 @@ class Dottore(Persona):
     
     def setSpecialization(self, specialization:str):
 
-        self.specialization = specialization
         if type(specialization) == str:
             self.specialization = specialization
         else:
             print("La specializzazione inserita non è una stringa")
+    
+    def setParcel(self, parcel:float):
+
+        self.parcel = parcel
+        if type(parcel) == str:
+            self.parcel = parcel
+        else:
+            print("La parcel inserita non è un float")
+    
+    def getSpecialization(self):
+
+        return self.specialization
+
+    def getParcel(self):
+
+        return self.parcel
+    
+    def isAValidDoctor(self):
+
+        if self.age > 30:
+            print(f"Doctor {self.first_name} {self.last_name} is valid!")
+        else:
+            print(f"Doctor {self.first_name} {self.last_name} is not valid!") 
+
+    def doctorGreet(self):
+
+        print(f"Sono un medico {self.specialization}")  
