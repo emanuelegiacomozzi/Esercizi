@@ -10,10 +10,11 @@ class Dottore(Persona):
         self.parcel = parcel
 
         if type(specialization) != str:
-
+            self.specialization = None
             print("La specializzazione inserita non è una stringa!")
+        
         if type(parcel) != float:
-
+            self.parcel = None
             print("La parcella inserita non è un float")
     
     def setSpecialization(self, specialization:str):
