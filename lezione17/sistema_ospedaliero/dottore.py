@@ -2,17 +2,17 @@ from persona import Persona
 
 class Dottore(Persona):
 
-    def __init__(self, first_name: str, last_name: str, età:int, specialization:str, parcel:float):
+    def __init__(self, first_name: str, last_name: str, age:int, specialization:str, parcel:float):
         super().__init__(first_name, last_name)
 
-        self.età = età
+        self.age = age
         self.specialization = specialization
         self.parcel = parcel
 
         if type(specialization) != str:
 
             print("La specializzazione inserita non è una stringa!")
-        if type(parcel) != str:
+        if type(parcel) != float:
 
             print("La parcella inserita non è un float")
     
@@ -25,8 +25,7 @@ class Dottore(Persona):
     
     def setParcel(self, parcel:float):
 
-        self.parcel = parcel
-        if type(parcel) == str:
+        if type(parcel) == float:
             self.parcel = parcel
         else:
             print("La parcel inserita non è un float")
@@ -48,4 +47,6 @@ class Dottore(Persona):
 
     def doctorGreet(self):
 
+        super().greet()
         print(f"Sono un medico {self.specialization}")  
+
