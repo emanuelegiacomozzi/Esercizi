@@ -8,7 +8,7 @@ class Paziente(Persona):
         self.age = age  
         self.idCode = idCode
     
-    def setIdId(self, idCode:str):
+    def setIdCode(self, idCode:str):
 
         self.idCode = idCode
     
@@ -19,3 +19,8 @@ class Paziente(Persona):
     def patientInfo(self):
 
         print(f"Paziente: {self.first_name} {self.last_name}\nID: {self.idCode}")
+
+paziente = Paziente("Mattia", "Neri", 34, "Hb34")
+paziente.setIdCode("Hnbcd")
+print(paziente.getidCode())
+paziente.patientInfo()
