@@ -90,5 +90,19 @@ class TestPaziente(unittest.TestCase):
         self.assertEqual(self.paziente.last_name, "Neri")
         self.assertEqual(self.paziente.idCode, "P001")
 
+class TestFattura(unittest.TestCase):
+
+    def setUp(self):
+        self.paziente1 = Paziente("Carlo", "Neri", "P001")
+        self.paziente2 = Paziente("Marco", "Rossi", "P002")
+        self.paziente3 = Paziente("Dario", "Verdi", "P003")
+        self.dottore1 = Dottore("Mario", "Vacci", "Chirurgo", 100.0)
+        self.fattura = Fattura([self.paziente1,self.paziente2,self.paziente3], self.dottore1)
+
+    def test_inizializzazione_fattura(self):
+        self.assertEqual(self.fattura.patient, [self.paziente1,self.paziente2,self.paziente3])
+        self.assertEqual(self.fattura.doctor, self.dottore1)
+    
+    
 if __name__ == "__main__":
     unittest.main()
