@@ -102,7 +102,28 @@ class TestFattura(unittest.TestCase):
     def test_inizializzazione_fattura(self):
         self.assertEqual(self.fattura.patient, [self.paziente1,self.paziente2,self.paziente3])
         self.assertEqual(self.fattura.doctor, self.dottore1)
+        self.assertEqual(self.fattura.fatture, 3)
+        self.assertEqual(self.fattura.salary, 0)
     
+    def test_salario_fatture(self):
+        salario = self.fattura.getSalary()
+        fatture = self.fattura.getFatture()
+        self.assertEqual(salario, 300.0)
+        self.assertEqual(fatture, 3)
     
+    def test_append_paziente(self):
+        new_paziente = Paziente("Giacomo", "Giorgi", "P004")
+        self.fattura.addPatient(new_paziente)
+        self.assertIn(new_paziente, self.fattura.patient)
+        self.assertEqual(self.fattura.getSalary(), 400.0)
+        self.assertEqual(self.fattura.getFatture(), 4)
+    
+    def test_remove_paziente(self):
+        self.fattura.removePatient("P002")
+        self.assertNotIn(self.paziente2, self.fattura.patient)
+        self.assertEqual(self.fattura.getSalary(), 300.0)
+        self.assertEqual(self.fattura.getFatture(), 3)
+
+
 if __name__ == "__main__":
     unittest.main()
