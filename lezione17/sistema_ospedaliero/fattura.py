@@ -16,7 +16,7 @@ class Fattura:
     
     def getSalary(self):
         
-        if self.patient is not None and self.doctor is not None:
+        if self.patient is not None :
             self.salary = self.doctor.getParcel() * len(self.patient)
             return self.salary
         else:
@@ -31,18 +31,22 @@ class Fattura:
             return None
     
     def addPatient(self, newPatient:Paziente):
-        if type(newPatient) == Paziente:
-            self.patient.append(newPatient)
-            self.getSalary()
-            self.getFatture()
-            print(f"Alla lista del Dottor cognome è stato aggiunto il paziente {newPatient.getidCode}")
+        self.patient.append(newPatient)
+        self.getSalary()
+        self.getFatture()
+        print(f"Alla lista del Dottor {self.doctor} è stato aggiunto il paziente {newPatient.getidCode}")
     
     def removePatient(self, idCode:str):
-        for patient in self.patient:
-            if patient.getidCode() == idCode:
-                self.patient.remove(patient)
-                self.getSalary()
-                self.getFatture()
-                print(f"Alla lista del Dottor {self.doctor} è stato rimosso il paziente {idCode}")
+        if self.patient is not None:
+            patient_to_remove = None
+            for patient in self.patient:
+                if patient.idCode == idCode:
+                    patient_to_remove = patient
+                    break
+                if patient_to_remove:
+                    self.patient.remove(patient_to_remove)
+                    self.getSalary()
+                    self.getFatture()
+                    print(f"Alla lista del Dottor {self.doctor} è stato rimosso il paziente {idCode}")
 
 
