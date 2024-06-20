@@ -2,29 +2,29 @@ class Film:
 
     def __init__(self, id:int, title:str):
 
-        self.id = id
-        self.title = title
+        self.__id = id
+        self.__title = title
     
     def setID(self, id:int):
 
-        self.id = id
+        self.__id = id
     
     def SetTitle(self, title:str):
 
-        self.title = title
+        self.__title = title
     
     def getId(self):
 
-        return self.id
+        return self.__id
     
     def getTitle(self):
 
-        return self.title
+        return self.__title
     
     def isEqual(self, otherFilm:str):
 
-        if self.id == otherFilm:
+        if self.__id == otherFilm:
             return True
         else:
             return False
-    
+           
