@@ -45,7 +45,7 @@ class Drama(Film):
     def __init__(self, id: int, title: str):
         super().__init__(id, title)
         self.__genere:str = "Drama"
-        self.__penale:float = 2
+        self.__penale:float = 2.0
 
     def getGenere(self):
 
