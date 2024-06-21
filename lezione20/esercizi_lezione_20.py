@@ -19,23 +19,21 @@ class Pagamento:
 
 class PagamentoContanti(Pagamento):
 
-    def __init__(self):
+    def __init__(self, importo:float):
         super().__init__()
+        self.setImporto(importo)
     
     def dettagliPagamento(self):
         return f"Pagamento in contanti di: €{self.__importo:.2f}"
 
     def inPezziDa(self):
 
-        importo = self.getImporto()
         banconote:list = [500, 200, 100, 50, 20, 10, 5]
-        
         monete:list = [2,1,0.50,0.20,0.10,0.05,0.01]
+        importo = self.getImporto()
         for banconota in banconote:
-            pezzi_banconota = self.importo//banconota
-            if pezzi_banconota > 0:
-                self.risultato[]
-
+            pezzi_banconota = importo//banconota
+            importo = round(importo - pezzi_banconota * banconota, 2)
         
 class PagamentoCartaDiCredito(Pagamento):
 
