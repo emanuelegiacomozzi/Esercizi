@@ -23,11 +23,9 @@ class Film:
     
     def isEqual(self, otherFilm:str):
 
-        if self.__id == otherFilm:
+        if self.getId() == otherFilm.getId():
             return True
         else:
             return False
     
-    def __str__(self):
-        return self.__title
            
