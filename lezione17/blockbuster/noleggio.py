@@ -6,7 +6,6 @@ class Noleggio:
 
         self.film_list = film_list
         self.rented_film:dict = {}
-        self.film_noleggiati = []
     
     def isAvaible(self, film:str):
 
