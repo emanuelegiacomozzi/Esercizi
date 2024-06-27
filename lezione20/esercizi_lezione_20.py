@@ -48,6 +48,46 @@ class PagamentoCartaDiCredito(Pagamento):
 
 carta_credito = PagamentoCartaDiCredito("Mario Rossi", "12/24", 1234567890123456)
 print(carta_credito.dettagliPagamento())
+
+
+
+
+#Rendering grafico
+from abc import ABC, abstractmethod
+
+class Forma(ABC):
+
+    def __init__(self, nome:str) -> None:
+        self.nome = nome
+    
+    @abstractmethod
+    def getArea():
+
+        pass
+
+    @abstractmethod
+    def render():
+
+        pass
+
+class Quadrato(Forma):
+
+    def __init__(self, lenght :float) -> None:
+        super().__init__(nome)
+        nome = "Quadrato"
+        self.lenght = lenght
+    
+    def getArea(self):
+
+        area_quadrato = self.lenght*self.lenght
+        return f"Area quadrato: {area_quadrato}"
+    
+    def render(self):
+
+        lenght = self.lenght
+        
+        
+
                     
 
             
