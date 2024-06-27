@@ -1,3 +1,5 @@
+
+
 class Zoo:
 
     def __init__(self):
@@ -88,7 +90,6 @@ class ZooKeeper:
             fence.animals.remove(animal)
             fence.area += animal.height * animal.width
            
-    
     def feed_animal(self,animal:Animal):
         self.animal = animal
         for fence in self.fences:
@@ -98,7 +99,6 @@ class ZooKeeper:
                     animal.height *= (1 + 2/100)
                     animal.width *= (1 + 2/100)
                     fence.area -= animal.height * animal.width 
-                    
     
     def clean(self,fence:Fence):
         self.fence = fence
@@ -109,6 +109,7 @@ class ZooKeeper:
     
     def describe_zoo(self, zoo:Zoo):
         zoo.describe_zoo()
+
 
 
 
