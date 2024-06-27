@@ -1,4 +1,3 @@
-'''
 def ciao(name:str)->str:
 
     return f"Ciao, {name}"
@@ -82,7 +81,7 @@ ciao()
 
 
 #############################################################################
-'''
+
 class Analisi:
 
     @staticmethod
@@ -99,12 +98,12 @@ class Analisi:
         
         return wrapper
 
-'''
+
 @Analisi.tempo
 def area_cerchio(raggio:float):
 
     return raggio * raggio * 3.14
 
 area_cerchio(5)
-'''
+
 
