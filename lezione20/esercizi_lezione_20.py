@@ -1,3 +1,4 @@
+'''
 class Pagamento:
 
     def __init__(self):
@@ -48,7 +49,7 @@ class PagamentoCartaDiCredito(Pagamento):
 
 carta_credito = PagamentoCartaDiCredito("Mario Rossi", "12/24", 1234567890123456)
 print(carta_credito.dettagliPagamento())
-
+'''
 
 
 
@@ -72,21 +73,50 @@ class Forma(ABC):
 
 class Quadrato(Forma):
 
-    def __init__(self, lenght :float) -> None:
-        super().__init__(nome)
-        nome = "Quadrato"
+    def __init__(self, lenght:float) -> None:
+        super().__init__("Quadrato")
         self.lenght = lenght
     
     def getArea(self):
 
-        area_quadrato = self.lenght*self.lenght
-        return f"Area quadrato: {area_quadrato}"
-    
+        return self.lenght*self.lenght
+
     def render(self):
 
-        lenght = self.lenght
+        print(f"Ecco un {self.nome} di lato {self.lenght}")
+        for _ in range(self.lenght):
+            if _ == 0 or _ == self.lenght-1:
+                print("*" * self.lenght)
+            else:
+                print("*" + ' '* (self.lenght-2) + '*')
+        print(f"L'area di questo quadrato vale: {self.getArea()}")
         
-        
+quadrato = Quadrato(6)
+quadrato.render()
+
+class Rettangolo(Forma):
+
+    def __init__(self, base:float, altezza:float) -> None:
+        super().__init__("Rettangolo")
+
+        self.base = base
+        self.altezza = altezza
+    
+    def getArea(self):
+        return self.base * self.altezza
+
+    def render(self):
+
+        print(f"Ecco un {self.nome} avente base {self.base} ed altezza {self.altezza}!")
+        for _ in range(self.altezza):
+            if _ == 0 or _ == self.altezza - 1:
+                print('*' * self.base)
+            else:
+                print('*' + ' ' * (self.base-2) + '*' )
+
+rettangolo = Rettangolo(8, 4)
+rettangolo.render()
+
 
                     
 
@@ -99,14 +129,5 @@ class Quadrato(Forma):
 
 
 
-pagamento = Pagamento()
-pagamento.setImporto(10)
-pagamento.getImporto()
-print(pagamento.dettagliPagamento())
-
-pagamento1 = PagamentoContanti()
-pagamento1.setImporto(65)
-print(pagamento1.dettagliPagamento())
-print(pagamento1.inPezziDa())
 
 
