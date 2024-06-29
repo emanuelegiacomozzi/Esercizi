@@ -114,8 +114,38 @@ class Rettangolo(Forma):
             else:
                 print('*' + ' ' * (self.base-2) + '*' )
 
+        print(f"L'area di questo rettangolo vale: {self.getArea()}")
+
 rettangolo = Rettangolo(8, 4)
 rettangolo.render()
+
+class Triangolo(Forma):
+
+    def __init__(self,cateto1:float, cateto2:float) -> None:
+        super().__init__("Triangolo")
+
+        self.cateto1 = cateto1
+        self.cateto2 = cateto2
+    
+    def getArea(self):
+
+        return (self.cateto1 * self.cateto2) / 2
+       
+    def render(self):
+
+        print(f"Ecco un {self.nome} avente base {self.cateto1} ed altezza {self.cateto2}")
+        for _ in range(self.cateto2):
+            if _ == 0:
+                print('*')
+            elif _ == self.cateto1 - 1:
+                print('*' * self.cateto1)
+            elif _ == 1 :
+                print('*' + '*')
+            else:
+                print('*' + ' ' + '*')
+
+triangolo = Triangolo(4,4)
+triangolo.render()
 
 
                     
