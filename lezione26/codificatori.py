@@ -22,6 +22,6 @@ class CifratoreAScorrimento(CodificatoreMessaggio, DecodificatoreMessaggio):
 
         
         for i in range(len(testoInChiaro)):
-            if
+            pass
 
     
