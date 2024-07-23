@@ -187,3 +187,14 @@ library.borrow_book("M002", "B002")
 
 library.return_book("M001", "B001")
 library.return_book("M002", "B002")
+
+###############################################################################################################àà
+class Movie:
+
+    def __init__(self, movie_id:str, title:str, director:str, is_rented:bool):
+
+        self.movie_id = movie_id
+        self.title = title
+        self.director = director
+    
+    def rent(self):
