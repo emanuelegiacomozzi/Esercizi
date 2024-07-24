@@ -8,6 +8,52 @@ def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
 
 print(merge_dictionaries({'x': 5}, {'c': -5}))
 ######################################################################################################
+def lista_a_dizionario(tuples: tuple) -> dict[str:list[int]]:
+    dizionario = {}
+    for i in tuples:
+        if i[0] not in dizionario:
+            dizionario[i[0]] = [i[1]]
+        else:
+            dizionario[i[0]].append(i[1])
+    return dizionario       
+    
+print(lista_a_dizionario([('a', 1), ('b', 2), ('a', 3)]))
+##################################################################################
+def transform(x: int) -> int:
+    if x % 2 == 0:
+        x /= 2
+        return x
+    else:
+        return (x*3)-1
+print(transform(4))
+###############################################################################################
+def filtra_e_mappa(prodotti: dict[str:float]) -> dict[str:float]:
+    new_prodotti:dict = {}
+    for key,value in prodotti.items():
+        if value > 20:
+            sconto = value/100*10
+            value -= sconto
+            new_prodotti[key] = value
+    return new_prodotti
+print(filtra_e_mappa({'Penna': 15.0, 'Zaino': 50.0, 'Quaderno': 22.0}))
+######################################################################
+def frequency_dict(elements: list) -> dict:
+    dizionario:dict = {}
+    for i in elements:
+        if i not in dizionario:
+            dizionario[i] = 1
+        else:
+            dizionario[i] +=1
+    return dizionario
+print(frequency_dict(['mela', 'banana', 'mela', 'mela', 'mela']))
+###########################################################################
+
+
+	
+
+
+
+
 '''
 class RecipeManager:
 
