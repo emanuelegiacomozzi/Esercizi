@@ -1,3 +1,14 @@
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+    for key,value in dict2.items():
+        if key in dict1:
+            dict1[key] += value
+        else:
+            dict1[key] = value
+    return dict1
+
+print(merge_dictionaries({'x': 5}, {'c': -5}))
+######################################################################################################
+'''
 class RecipeManager:
 
     def __init__(self):
@@ -191,10 +202,42 @@ library.return_book("M002", "B002")
 ###############################################################################################################àà
 class Movie:
 
-    def __init__(self, movie_id:str, title:str, director:str, is_rented:bool):
-
+    def __init__(self, movie_id:str, title:str, director:str):
         self.movie_id = movie_id
         self.title = title
         self.director = director
+        self.is_rented:bool = False
     
     def rent(self):
+        if self.is_rented:
+            self.is_rented == True
+        else:
+            print(f"Il film {self.title} è gia noleggiato.")
+    
+    def return_movie(self):
+        if self.is_rented == True:
+            self.is_rented == False
+        else:
+            print(f"Il film {self.title} non è attualmente noleggiato.")
+
+class Customer:
+
+    def __init__(self, customer_id:str, name:str):
+        self.customer_id = customer_id
+        self.name = name
+        self.rented_movies:list[Movie] = []
+    
+    def rent_movie(self, movie:Movie):
+        if movie not in self.rented_movies:
+            self.rented_movies.append(movie)
+        else:
+            print(f"Il film {movie.title} è gia noleggiato")
+    
+    def return_movie(self, movie:Movie):
+        if movie in self.rented_movies:
+            self.rented_movies.remove(movie)
+        else:
+            print(f"Il film {movie.title} non è stato noleggiato da questo cliente")
+    
+class VideoRentalStore:
+'''
